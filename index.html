@@ -6,340 +6,353 @@
 <title>Ashish Srivastava</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f172a, #020617);
-  color: white;
-  text-align: center;
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+scroll-behavior:smooth;
 }
 
-.hero {
-  padding: 60px 20px 30px 20 px;
-  position: relative;
+/* HERO */
+
+.hero{
+padding:60px 20px;
+text-align:center;
 }
 
-.profile-img {
-    width: 100%;
-    max-width: 650px;
-    height: auto;              /* FIXED */
-    object-fit: contain;       /* FIXED */
-    border-radius: 20px;
-    border: 4px solid #38bdf8;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    margin-bottom: 30px;
+h1{
+font-size:42px;
+margin-bottom:10px;
 }
 
-h1, h2 {
-  margin-bottom: 15px;
+.subtitle{
+color:#38bdf8;
+font-weight:bold;
+margin-bottom:20px;
 }
 
-.subtitle {
-  font-size: 18px;
-  color: #38bdf8;
-  font-weight: bold;
+.profile-img{
+width:100%;
+max-width:700px;
+height:420px;
+object-fit:cover;
+object-position:center 15%;
+border-radius:20px;
+box-shadow:0 30px 60px rgba(0,0,0,0.6);
+border:4px solid #38bdf8;
+margin:30px auto 20px auto;
+display:block;
 }
 
-.hero p {
-  max-width: 650px;
-  margin: 10px auto;
-  color: #cbd5e1;
-  line-height: 1.6;
+.hero p{
+max-width:650px;
+margin:auto;
+color:#cbd5e1;
+line-height:1.6;
 }
 
-.button {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 12px 28px;
-  background: #38bdf8;
-  color: black;
-  text-decoration: none;
-  border-radius: 30px;
-  font-weight: bold;
-  transition: 0.3s;
+/* BUTTON */
+
+.btn{
+display:inline-block;
+margin:15px 10px;
+padding:14px 28px;
+background:#38bdf8;
+color:black;
+font-weight:bold;
+border-radius:30px;
+text-decoration:none;
+transition:0.3s;
 }
 
-.button:hover {
-  background: white;
+.btn:hover{
+background:white;
 }
 
-.section {
-  padding: 60px 20px;
+/* STATS */
+
+.stats{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+padding:60px 20px;
 }
 
-.card {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(10px);
-  margin: 20px auto;
-  padding: 25px;
-  border-radius: 16px;
-  max-width: 500px;
+.stat-box{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+padding:40px;
+border-radius:20px;
+min-width:280px;
+text-align:center;
+transition:0.3s;
 }
 
-.stats {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-  margin-top: 25px;
+.stat-box:hover{
+transform:translateY(-6px);
 }
 
-.stat-box {
-    background: rgba(30, 41, 59, 0.7);
-    backdrop-filter: blur(10px);
-    padding: 30px 20px;
-    border-radius: 18px;
-    max-width: 320px;
-    width: 100%;
-    margin: 15px auto;
-    min-height: 200px;   /* 👈 FIXED HEIGHT */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.stat-box h2{
+font-size:32px;
+margin:0;
 }
 
-input, textarea, select {
-  width: 90%;
-  max-width: 400px;
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  margin-top: 10px;
+.stat-box p{
+margin-top:10px;
+color:#cbd5e1;
 }
 
-input:focus, textarea:focus, select:focus {
-  outline: none;
-  box-shadow: 0 0 10px #38bdf8;
+/* SECTION */
+
+.section{
+padding:70px 20px;
+text-align:center;
 }
 
-footer {
-  padding: 30px;
-  color: #94a3b8;
-  font-size: 14px;
+.section h2{
+font-size:30px;
+margin-bottom:20px;
+}
+
+.section p.subtext{
+color:#94a3b8;
+max-width:700px;
+margin:0 auto 40px;
+}
+
+/* CARD */
+
+.card{
+max-width:750px;
+margin:40px auto;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+padding:30px;
+border-radius:20px;
+}
+
+.card img{
+width:100%;
+border-radius:12px;
+margin:20px 0;
+}
+
+/* VIDEO */
+
+.video-container{
+position:relative;
+padding-bottom:56.25%;
+height:0;
+overflow:hidden;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+.video-container iframe{
+position:absolute;
+width:100%;
+height:100%;
+left:0;
+top:0;
+border-radius:15px;
+}
+
+/* CONTACT */
+
+.contact-box{
+max-width:600px;
+margin:auto;
+background:rgba(255,255,255,0.05);
+padding:40px;
+border-radius:20px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:40px;
+color:#94a3b8;
+}
+
+@media(max-width:768px){
+.profile-img{
+height:260px;
+}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ABOUT SECTION -->
+<!-- HERO -->
+
 <header class="hero">
-  <img src="prorile.jpg" class="profile-img" alt="Ashish Srivastava">
-  <h1>Ashish Srivastava</h1>
-  <div class="subtitle">Journalist | Podcast Host | Content Creator</div>
 
-  <p>
-    I focus on health, public policy and ground realities — bridging traditional journalism with new-age digital storytelling.
-  </p>
+<h1>Ashish Srivastava</h1>
 
-  <p>
-    My work turns complex issues into meaningful conversations that inform and engage.
-  </p>
-
-  <div class="stats">
-    <div class="stat-box">
-      <h3>40K+</h3>
-      <p>Episode Views</p>
-    </div>
-    <div class="stat-box">
-    <h3>3000+</h3>
-    <p>Published Articles</p>
-    <span class="stat-sub">
-        In Leading National Publications
-    </span>
+<div class="subtitle">
+Journalist | Podcast Host | Content Creator
 </div>
-    <div class="stat-box">
-      <h3>Health & Policy</h3>
-      <p>Core Focus</p>
-    </div>
-    <div class="stat-box">
-      <h3>Journalism</h3>
-      <p>Foundation</p>
-    </div>
-  </div>
 
-  <a class="button" href="#work">Explore My Work</a>
-  <br>
-  <a class="button" href="Ashish_Srivastava_Resume.pdf" target="_blank">Download Resume</a>
+<img src="prorile.jpg" class="profile-img">
+
+<p>
+I report on health, politics & public policy — bridging ground realities with digital storytelling.
+</p>
+
+<div>
+<a href="#videos" class="btn">Explore Work</a>
+<a href="Ashish_Srivastava_Resume.pdf" target="_blank" class="btn">Download Resume</a>
+</div>
+
 </header>
 
-<!-- FEATURED WORK -->
-<div class="section" id="work">
-  <h2>Featured Conversations & Content</h2>
+<!-- STATS -->
 
-  <div class="card">
-  <h3>Podcast Episode – Glaucoma Awareness</h3>
+<section class="stats">
 
-  <a href="https://youtu.be/VM7iiSxsZDo" target="_blank">
-    <img src="https://i.ytimg.com/vi/VM7iiSxsZDo/hqdefault.jpg"
-         alt="Podcast Thumbnail"
-         style="width:100%; border-radius:12px; margin:15px 0;">
-  </a>
-
-  <p>
-    A powerful conversation on early detection, myths and public awareness —
-    a focused discussion that’s reached thousands.
-  </p>
-
-  <a href="https://youtu.be/VM7iiSxsZDo"
-     target="_blank"
-     class="button">
-     ▶ Watch Full Episode
-  </a>
+<div class="stat-box">
+<h2>40K+</h2>
+<p>Episode Views</p>
 </div>
-  
-  <div class="card">
-  <h3>Political Interview | Sandeep Dixit on Challenging Arvind Kejriwal</h3>
 
-  <a href="https://youtu.be/ZX6BzF2xu7Q" target="_blank">
-    <img src="https://i.ytimg.com/vi/ZX6BzF2xu7Q/hqdefault.jpg"
-         alt="Interview with Sandeep Dixit Thumbnail"
-         style="width:100%; border-radius:12px; margin:15px 0;">
-  </a>
-
-  <p>
-    An in-depth interview with Congress Leader Sandeep Dixit on why he chose to contest 
-    against Arvind Kejriwal and what it means for the future of the Grand Old Party in Delhi politics.
-  </p>
-
-  <a href="https://youtu.be/ZX6BzF2xu7Q"
-     target="_blank"
-     class="button">
-     ▶ Watch Full Interview
-  </a>
+<div class="stat-box">
+<h2>50+</h2>
+<p>Published Articles<br>Leading National Publications</p>
 </div>
+
+</section>
+
+<!-- CONVERSATIONS & INTERVIEWS -->
+
+<section class="section" id="videos">
+<h2>Conversations & Interviews</h2>
+<p class="subtext">
+Long-form discussions, political interviews and public-interest conversations.
+</p>
+
+<div class="card">
+<h3>Podcast Episode – Glaucoma Awareness</h3>
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/VM7iiSxsZDo" allowfullscreen></iframe>
+</div>
+<a href="https://youtu.be/VM7iiSxsZDo" target="_blank" class="btn">Watch Episode</a>
+</div>
+
+<div class="card">
+<h3>Interview with Sandeep Dixit</h3>
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/ZX6BzF2xu7Q" allowfullscreen></iframe>
+</div>
+<a href="https://youtu.be/ZX6BzF2xu7Q" target="_blank" class="btn">Watch Interview</a>
+</div>
+
+</section>
 
 <!-- PUBLISHED REPORTING -->
-<!-- PUBLISHED REPORTING -->
-<div class="section" id="published">
-  <h2>Published Reporting</h2>
 
-  <p style="opacity:0.7; max-width:750px; margin:0 auto 40px;">
-    Ground reporting, investigative journalism and public-interest stories published in The New Indian Express.
-  </p>
+<section class="section">
+<h2>Published Reporting</h2>
 
-  <div class="card">
-    <h3>Big Bang Launch of Arogya Mandirs</h3>
-    <a href="https://www.newindianexpress.com/cities/delhi/2025/May/26/big-bang-launch-of-arogya-mandirs" target="_blank">
-      <img src="https://media.newindianexpress.com/newindianexpress%2F2025-05-26%2Fbq0t1wap%2Farogya03065317.jpg?rect=0%2C410%2C5560%2C3128&w=1200&auto=format%2Ccompress&fit=max"
-           alt="Big Bang Launch of Arogya Mandirs"
-           style="width:100%; border-radius:12px; margin:15px 0;">
-    </a>
-    <p><strong>Publication:</strong> The New Indian Express</p>
-    <p>
-      A full-page ground report examining the transition from Mohalla Clinics to Ayushman Arogya Mandirs, 
-      exploring infrastructure gaps and the future of accessible public healthcare.
-    </p>
-    <a class="button" href="https://www.newindianexpress.com/cities/delhi/2025/May/26/big-bang-launch-of-arogya-mandirs" target="_blank">
-      Read Full Story →
-    </a>
-  </div>
+<div class="card">
+<h3>Big Bang Launch of Arogya Mandirs</h3>
+<img src="https://media.newindianexpress.com/newindianexpress%2F2025-05-26%2Fbq0t1wap%2Farogya03065317.jpg?rect=0%2C410%2C5560%2C3128&w=1200&auto=format%2Ccompress&fit=max">
+<a href="https://www.newindianexpress.com/cities/delhi/2025/May/26/big-bang-launch-of-arogya-mandirs" target="_blank" class="btn">Read Article</a>
+</div>
 
-  <div class="card">
-    <h3>Fuel Ban Policy Faces Key Hurdles</h3>
-    <a href="https://www.newindianexpress.com/cities/delhi/2025/Jun/30/fuel-ban-policy-faces-key-hurdles" target="_blank">
-      <img src="https://media.newindianexpress.com/newindianexpress%2F2025-06-30%2Fziuz1mzm%2FNewBB-Project.jpg?rect=26%2C0%2C1156%2C650&w=1200&auto=format%2Ccompress&fit=max"
-           alt="Fuel Ban Policy Faces Key Hurdles"
-           style="width:100%; border-radius:12px; margin:15px 0;">
-    </a>
-    <p><strong>Publication:</strong> The New Indian Express</p>
-    <p>
-      Investigative coverage on Delhi government's fuel ban for end-of-life vehicles, 
-      highlighting technical glitches and rollout challenges.
-    </p>
-    <a class="button" href="https://www.newindianexpress.com/cities/delhi/2025/Jun/30/fuel-ban-policy-faces-key-hurdles" target="_blank">
-      Read Full Story →
-    </a>
-  </div>
+<div class="card">
+<h3>Fuel Ban Policy Faces Key Hurdles</h3>
+<img src="https://media.newindianexpress.com/newindianexpress%2F2025-06-30%2Fziuz1mzm%2FNewBB-Project.jpg?rect=26%2C0%2C1156%2C650&w=1200&auto=format%2Ccompress&fit=max">
+<a href="https://www.newindianexpress.com/cities/delhi/2025/Jun/30/fuel-ban-policy-faces-key-hurdles" target="_blank" class="btn">Read Article</a>
+</div>
 
-  <div class="card">
-    <h3>Doctors in (D)anger</h3>
-    <a href="https://www.newindianexpress.com/specials/2024/Aug/19/doctors-in-danger" target="_blank">
-      <img src="https://media.newindianexpress.com/newindianexpress%2F2024-08-19%2Fce9m3fuz%2FPTI08_16_2024_000289B%20(1).jpg?w=1200&auto=format%2Ccompress&fit=max"
-           alt="Doctors in Danger"
-           style="width:100%; border-radius:12px; margin:15px 0;">
-    </a>
-    <p><strong>Publication:</strong> The New Indian Express</p>
-    <p>
-      A national overview following the R.G. Kar Medical College tragedy — examining calls for stronger protections for healthcare workers.
-    </p>
-    <a class="button" href="https://www.newindianexpress.com/specials/2024/Aug/19/doctors-in-danger" target="_blank">
-      Read Full Story →
-    </a>
-  </div>
+<div class="card">
+<h3>Doctors in Danger</h3>
+<img src="https://media.newindianexpress.com/newindianexpress%2F2024-08-19%2Fce9m3fuz%2FPTI08_16_2024_000289B%20(1).jpg?w=1200&auto=format%2Ccompress&fit=max">
+<a href="https://www.newindianexpress.com/specials/2024/Aug/19/doctors-in-danger" target="_blank" class="btn">Read Article</a>
+</div>
 
-  <div class="card">
-    <h3>Capital's Deadly Dose of Deception</h3>
-    <a href="https://www.newindianexpress.com/cities/delhi/2025/Jul/14/capitals-deadly-dose-of-deception" target="_blank">
-      <img src="https://media.newindianexpress.com/newindianexpress%2F2025-07-13%2F8v9g0hms%2FScreenshot-2025-07-14-034228.jpg?rect=0%2C0%2C951%2C535&w=1200&auto=format%2Ccompress&fit=max"
-           alt="Capital’s Deadly Dose of Deception"
-           style="width:100%; border-radius:12px; margin:15px 0;">
-    </a>
-    <p><strong>Publication:</strong> The New Indian Express</p>
-    <p>
-      An investigative report uncovering a dangerous fake cancer drug racket in Delhi — detailing enforcement action and public health implications.
-    </p>
-    <a class="button" href="https://www.newindianexpress.com/cities/delhi/2025/Jul/14/capitals-deadly-dose-of-deception" target="_blank">
-      Read Full Story →
-    </a>
-  </div>
+<div class="card">
+<h3>Capital's Deadly Dose of Deception</h3>
+<img src="https://media.newindianexpress.com/newindianexpress%2F2025-07-13%2F8v9g0hms%2FScreenshot-2025-07-14-034228.jpg?rect=0%2C0%2C951%2C535&w=1200&auto=format%2Ccompress&fit=max">
+<a href="https://www.newindianexpress.com/cities/delhi/2025/Jul/14/capitals-deadly-dose-of-deception" target="_blank" class="btn">Read Article</a>
+</div>
+
+</section>
+
+<!-- FEATURED IN NEWS -->
+
+<section class="section">
+<h2>Featured In News</h2>
+
+<div class="card">
+<h3>Delhi’s Toxic Air Crisis – Quoted by The Logical Indian</h3>
+<img src="https://thelogicalindian.com/wp-content/uploads/2025/11/Web-Featured-Image-53.jpg.webp">
+<a href="https://thelogicalindian.com/delhis-toxic-air-crisis-grap-3-on-hold-amid-slight-improvement-several-detained-at-india-gate-protest-against-rising-aqi/" target="_blank" class="btn">Read Coverage</a>
+</div>
+
+<div class="card">
+<h3>Kolkata Doctor Protest – The Patriot</h3>
+<a href="https://thepatriot.in/delhi-ncr/kolkata-doctor-rape-murder-aiims-other-hospital-doctors-call-off-strike-after-sc-assurance-56182/" target="_blank" class="btn">Read Coverage</a>
+</div>
+
+<div class="card">
+<h3>NEET PG Protest – Moneycontrol</h3>
+<img src="https://images.moneycontrol.com/static-hindinews/2021/12/ResidentDoctors775-770x430.jpg?impolicy=website&width=770&height=431">
+<a href="https://hindi.moneycontrol.com/news/india/delhi-police-detains-resident-doctors-protesting-near-ito-forda-announces-strike-373841.html" target="_blank" class="btn">Read Coverage</a>
+</div>
+
+<div class="card">
+<h3>AIIMS Cyber Breach – Medianama</h3>
+<a href="https://www.medianama.com/2023/06/223-e-hospital-malware-attack-it-minister-denies-breach-aiims-confirms/" target="_blank" class="btn">Read Coverage</a>
+</div>
+
+</section>
+
+<!-- RESUME -->
+
+<section class="section">
+<h2>Resume</h2>
+<a href="Ashish_Srivastava_Resume.pdf" target="_blank" class="btn">
+Download Resume (PDF)
+</a>
+</section>
+
+<!-- CONTACT -->
+
+<section class="section" id="contact">
+<h2>Contact Me</h2>
+
+<div class="contact-box">
+
+<p style="font-size:18px; margin-bottom:25px;">
+Available for podcast hosting, public policy discussions,
+editorial collaborations and media engagements.
+</p>
+
+<div style="margin-bottom:25px;">
+<strong>Email</strong><br>
+<a href="mailto:aashish396@gmail.com" style="color:#38bdf8; text-decoration:none; font-size:18px;">
+aashish396@gmail.com
+</a>
+</div>
+
+<div>
+<strong>Connect on X</strong><br><br>
+<a href="https://twitter.com/AshishOnGround" target="_blank" class="btn">
+@AshishOnGround
+</a>
+</div>
 
 </div>
 
-<!-- MEDIA MENTIONS -->
-<div class="section">
-  <h2>Recognised & Featured In</h2>
-
-  <div class="card">
-    <h3>Media Mention Title</h3>
-    <a class="button" href="https://example.com" target="_blank">Read Coverage</a>
-  </div>
-</div>
-
-<!-- PRINT COVERAGE -->
-<div class="section">
-  <h2>In Print</h2>
-
-  <div class="card">
-    <img src="print1.jpg" width="100%" style="border-radius:8px;">
-    <p>Publication Name</p>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<div class="section">
-  <h2>Work With Me</h2>
-
-  <div class="card">Podcast Hosting & Moderation</div>
-  <div class="card">Research-driven Script Development</div>
-  <div class="card">Health & Public Affairs Content Strategy</div>
-</div>
-
-<!-- CONTACT FORM -->
-<div class="section">
-  <h2>Contact Me</h2>
-
-  <form action="https://formspree.io/f/yourcode" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-
-    <select name="inquiry">
-      <option value="">Inquiry Type</option>
-      <option>Collaboration</option>
-      <option>Job Opportunity</option>
-      <option>Media Inquiry</option>
-      <option>Other</option>
-    </select>
-
-    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-
-    <button type="submit" class="button">Send Message</button>
-  </form>
-</div>
+</section>
 
 <footer>
-© 2026 Ashish Srivastava
+© 2026 Ashish Srivastava | All Rights Reserved
 </footer>
 
 </body>
