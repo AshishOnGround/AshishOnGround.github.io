@@ -85,9 +85,18 @@ h1, h2 {
 }
 
 .stat-box {
-  background: rgba(56, 189, 248, 0.1);
-  padding: 15px 25px;
-  border-radius: 12px;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 30px 20px;
+    border-radius: 18px;
+    max-width: 320px;
+    width: 100%;
+    margin: 15px auto;
+    min-height: 200px;   /* 👈 FIXED HEIGHT */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 input, textarea, select {
@@ -137,7 +146,7 @@ footer {
     <h3>3000+</h3>
     <p>Published Articles</p>
     <span class="stat-sub">
-        Featured in Leading National Publications
+        In Leading National Publications
     </span>
 </div>
     <div class="stat-box">
