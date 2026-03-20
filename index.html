@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Ashish Srivastava</title>
 
+<!-- SEO -->
 <meta property="og:title" content="Ashish Srivastava | Journalist">
 <meta property="og:description" content="Journalist | Ground Reporter | Podcast Host">
 <meta property="og:image" content="https://ashishonground.github.io/og-image.png">
@@ -24,38 +26,40 @@ line-height:1.6;
 
 /* HERO */
 .hero{
-height:100vh;
+min-height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
+background:url('og-image.png') no-repeat center;
+background-size:contain;
+background-color:#000;
 position:relative;
-background:url('og-image.png') center/cover no-repeat;
+padding:20px;
 }
 
 .hero::after{
 content:"";
 position:absolute;
 inset:0;
-background:linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.3));
+background:rgba(0,0,0,0.65);
 }
 
-.hero *{
-position:relative;
-z-index:2;
-}
+.hero *{ position:relative; z-index:2; }
 
 h1{
 font-family:'Bebas Neue';
-font-size:56px;
-letter-spacing:2px;
+font-size:48px;
 color:#ffcc00;
+letter-spacing:2px;
 margin-bottom:10px;
 }
 
 .subtitle{
-color:#f43f5e;
+color:#ff4d4d;
+font-weight:600;
+font-size:16px;
 margin-bottom:15px;
 }
 
@@ -73,12 +77,12 @@ background:#ff0000;
 color:#fff;
 border-radius:6px;
 text-decoration:none;
-font-weight:500;
-transition:0.3s;
+transition:all 0.25s ease;
 }
 
 .btn:hover{
-transform:translateY(-2px);
+transform:translateY(-3px) scale(1.04);
+box-shadow:0 10px 25px rgba(255,0,0,0.4);
 background:#dc2626;
 }
 
@@ -94,7 +98,7 @@ margin:auto;
 font-family:'Bebas Neue';
 font-size:32px;
 color:#ffcc00;
-margin-bottom:10px;
+margin-bottom:15px;
 }
 
 /* STATS */
@@ -103,29 +107,37 @@ display:flex;
 flex-wrap:wrap;
 justify-content:center;
 gap:20px;
-margin-top:20px;
 }
 
 .stat-box{
 background:#111;
-padding:30px;
+padding:25px;
 border-radius:12px;
-min-width:260px;
+min-width:240px;
+transition:0.3s;
 }
 
-/* VIDEO GRID */
+.stat-box:hover{
+transform:translateY(-5px);
+}
+
+/* VIDEO */
 .video-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:30px;
+gap:25px;
 margin-top:30px;
 }
 
 .video-card{
 background:#111;
 padding:20px;
-border-radius:14px;
-text-align:left;
+border-radius:12px;
+transition:0.3s;
+}
+
+.video-card:hover{
+transform:translateY(-6px);
 }
 
 .video-container{
@@ -139,19 +151,21 @@ margin:15px 0;
 position:absolute;
 width:100%;
 height:100%;
-top:0;
-left:0;
 border-radius:10px;
 }
 
-/* CARDS */
+/* CARD */
 .card{
 background:#111;
 padding:25px;
-border-radius:14px;
+border-radius:12px;
 margin:30px auto;
 max-width:700px;
-text-align:left;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
 }
 
 .card img{
@@ -164,7 +178,7 @@ margin:15px 0;
 .contact-box{
 background:#111;
 padding:30px;
-border-radius:14px;
+border-radius:12px;
 }
 
 /* FOOTER */
@@ -174,8 +188,16 @@ padding:30px;
 color:#888;
 }
 
-@media(max-width:768px){
-h1{font-size:36px;}
+/* ANIMATION */
+.fade-up{
+opacity:0;
+transform:translateY(30px);
+transition:all 0.8s ease;
+}
+
+.fade-up.show{
+opacity:1;
+transform:translateY(0);
 }
 
 </style>
@@ -202,43 +224,41 @@ I report on health, politics & public policy — bridging ground realities with 
 </header>
 
 <!-- STATS -->
-<section class="section">
+<section class="section fade-up">
 <div class="stats">
-<div class="stat-box">
+
+<div class="stat-box fade-up">
 <h2>40K+</h2>
 <p>Episode Views</p>
 </div>
 
-<div class="stat-box">
+<div class="stat-box fade-up">
 <h2>3000+</h2>
-<p>Published Articles</p>
+<p>Published Articles<br>Leading National Publications</p>
 </div>
+
 </div>
 </section>
 
 <!-- VIDEOS -->
 <section class="section" id="videos">
-<h2>Conversations & Interviews</h2>
+<h2 class="fade-up">Conversations & Interviews</h2>
 
 <div class="video-grid">
 
-<div class="video-card">
+<div class="video-card fade-up">
 <h3>Podcast Episode – Glaucoma Awareness</h3>
-
 <div class="video-container">
 <iframe src="https://www.youtube.com/embed/VM7iiSxsZDo" allowfullscreen></iframe>
 </div>
-
 <a href="https://youtu.be/VM7iiSxsZDo" target="_blank" class="btn">Watch Episode</a>
 </div>
 
-<div class="video-card">
+<div class="video-card fade-up">
 <h3>Interview with Sandeep Dixit</h3>
-
 <div class="video-container">
 <iframe src="https://www.youtube.com/embed/ZX6BzF2xu7Q" allowfullscreen></iframe>
 </div>
-
 <a href="https://youtu.be/ZX6BzF2xu7Q" target="_blank" class="btn">Watch Interview</a>
 </div>
 
@@ -247,29 +267,29 @@ I report on health, politics & public policy — bridging ground realities with 
 
 <!-- REPORTING -->
 <section class="section">
-<h2>Published Reporting</h2>
+<h2 class="fade-up">Published Reporting</h2>
 
-<div class="card">
+<div class="card fade-up">
 <h3>Big Bang Launch of Arogya Mandirs</h3>
-<img src="https://media.newindianexpress.com/newindianexpress%2F2025-05-26%2Fbq0t1wap%2Farogya03065317.jpg?w=1200">
+<img src="https://media.newindianexpress.com/newindianexpress/2025-05/26/bq0t1wap/arogya03065317.jpg">
 <a href="https://www.newindianexpress.com/cities/delhi/2025/May/26/big-bang-launch-of-arogya-mandirs" target="_blank" class="btn">Read Article</a>
 </div>
 
-<div class="card">
+<div class="card fade-up">
 <h3>Fuel Ban Policy Faces Key Hurdles</h3>
-<img src="https://media.newindianexpress.com/newindianexpress%2F2025-06-30%2Fziuz1mzm%2FNewBB-Project.jpg?w=1200">
+<img src="https://media.newindianexpress.com/newindianexpress/2025-06/30/ziuz1mzm/NewBB-Project.jpg">
 <a href="https://www.newindianexpress.com/cities/delhi/2025/Jun/30/fuel-ban-policy-faces-key-hurdles" target="_blank" class="btn">Read Article</a>
 </div>
 
-<div class="card">
+<div class="card fade-up">
 <h3>Doctors in Danger</h3>
-<img src="https://media.newindianexpress.com/newindianexpress%2F2024-08-19%2Fce9m3fuz%2FPTI08_16_2024_000289B.jpg?w=1200">
+<img src="https://media.newindianexpress.com/newindianexpress/2024-08/19/ce9m3fuz/PTI08_16_2024_000289B.jpg">
 <a href="https://www.newindianexpress.com/specials/2024/Aug/19/doctors-in-danger" target="_blank" class="btn">Read Article</a>
 </div>
 
-<div class="card">
+<div class="card fade-up">
 <h3>Capital's Deadly Dose of Deception</h3>
-<img src="https://media.newindianexpress.com/newindianexpress%2F2025-07-13%2F8v9g0hms%2FScreenshot.jpg?w=1200">
+<img src="https://media.newindianexpress.com/newindianexpress/2025-07/13/8v9g0hms/Screenshot-2025-07-14-034228.jpg">
 <a href="https://www.newindianexpress.com/cities/delhi/2025/Jul/14/capitals-deadly-dose-of-deception" target="_blank" class="btn">Read Article</a>
 </div>
 
@@ -277,27 +297,27 @@ I report on health, politics & public policy — bridging ground realities with 
 
 <!-- MEDIA -->
 <section class="section">
-<h2>Featured In News</h2>
+<h2 class="fade-up">Featured In News</h2>
 
-<div class="card">
+<div class="card fade-up">
 <h3>The Logical Indian</h3>
 <img src="https://thelogicalindian.com/wp-content/uploads/2025/11/Web-Featured-Image-53.jpg.webp">
-<a href="#" class="btn">Read Coverage</a>
+<a href="https://thelogicalindian.com/delhis-toxic-air-crisis-grap-3-on-hold-amid-slight-improvement-several-detained-at-india-gate-protest-against-rising-aqi/" target="_blank" class="btn">Read Coverage</a>
 </div>
 
-<div class="card">
+<div class="card fade-up">
 <h3>Moneycontrol</h3>
 <img src="https://images.moneycontrol.com/static-hindinews/2021/12/ResidentDoctors775-770x430.jpg">
-<a href="#" class="btn">Read Coverage</a>
+<a href="https://hindi.moneycontrol.com/news/india/delhi-police-detains-resident-doctors-protesting-near-ito-forda-announces-strike-373841.html" target="_blank" class="btn">Read Coverage</a>
 </div>
 
 </section>
 
 <!-- CONTACT -->
 <section class="section">
-<h2>Contact</h2>
+<h2 class="fade-up">Contact</h2>
 
-<div class="contact-box">
+<div class="contact-box fade-up">
 <a href="mailto:aashish396@gmail.com" class="btn">Email</a>
 <a href="https://twitter.com/AshishOnGround" target="_blank" class="btn">Twitter</a>
 </div>
@@ -307,6 +327,20 @@ I report on health, politics & public policy — bridging ground realities with 
 <footer>
 © 2026 Ashish Srivastava
 </footer>
+
+<script>
+const elements = document.querySelectorAll('.fade-up');
+
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
+});
+},{threshold:0.15});
+
+elements.forEach(el=>observer.observe(el));
+</script>
 
 </body>
 </html>
