@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ashish Srivastava</title>
 
+<!-- SEO SAME -->
+<meta property="og:title" content="Ashish Srivastava | Journalist">
+<meta property="og:description" content="Journalist | Ground Reporter | Podcast Host">
+<meta property="og:image" content="https://ashishonground.github.io/og-image.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -15,7 +20,6 @@ margin:0;
 font-family:'Inter',sans-serif;
 background:#000;
 color:white;
-scroll-behavior:smooth;
 }
 
 /* NOISE */
@@ -33,24 +37,14 @@ z-index:999;
 
 /* HERO */
 .hero{
-position:relative;
 height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-overflow:hidden;
-}
-
-.hero video{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-object-fit:cover;
-filter:brightness(0.4);
+background:url('og-image.png') center/cover no-repeat;
+position:relative;
 }
 
 .hero::after{
@@ -67,14 +61,13 @@ z-index:2;
 
 h1{
 font-family:'Bebas Neue';
-font-size:70px;
+font-size:64px;
 color:#ffcc00;
-letter-spacing:2px;
 }
 
 .subtitle{
 color:#f43f5e;
-margin-bottom:20px;
+margin-bottom:15px;
 }
 
 .hero p{
@@ -98,21 +91,6 @@ transition:0.3s;
 transform:scale(1.05);
 }
 
-/* FEATURED */
-.featured{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-padding:20px;
-background:#0a0a0a;
-border-radius:16px;
-}
-
-.featured img{
-width:100%;
-border-radius:12px;
-}
-
 /* SECTION */
 .section{
 padding:70px 20px;
@@ -123,6 +101,20 @@ text-align:center;
 font-family:'Bebas Neue';
 font-size:34px;
 color:#ffcc00;
+}
+
+/* STATS */
+.stats{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+
+.stat-box{
+background:#111;
+padding:30px;
+border-radius:12px;
 }
 
 /* CARD */
@@ -137,20 +129,6 @@ transition:0.3s;
 
 .card:hover{
 transform:translateY(-10px);
-}
-
-/* STATS */
-.stats{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.stat-box{
-background:#111;
-padding:30px;
-border-radius:12px;
 }
 
 /* VIDEO */
@@ -190,14 +168,10 @@ color:#aaa;
 <!-- HERO -->
 <header class="hero">
 
-<video autoplay muted loop playsinline>
-<source src="bg-video.mp4" type="video/mp4">
-</video>
-
 <h1>ASHISH SRIVASTAVA</h1>
 
 <div class="subtitle">
-Journalist | Ground Reporter | Podcast Producer
+Journalist | Ground Reporter | Storyteller | Podcast Producer
 </div>
 
 <p>
@@ -205,28 +179,12 @@ I report on health, politics & public policy — bridging ground realities with 
 </p>
 
 <a href="#videos" class="btn">Explore Work</a>
-<a href="Ashish_Srivastava_Resume.pdf" class="btn">Download Resume</a>
+<a href="Ashish_Srivastava_Resume.pdf" target="_blank" class="btn">Download Resume</a>
 
 </header>
 
-<!-- FEATURED -->
-<section class="section">
-
-<h2>Featured Investigation</h2>
-
-<div class="featured">
-<img src="https://media.newindianexpress.com/newindianexpress%2F2025-07-13%2F8v9g0hms%2FScreenshot-2025-07-14-034228.jpg?w=1200">
-<div>
-<h3>Capital's Deadly Dose of Deception</h3>
-<p>Exposing Delhi’s fake cancer drug racket.</p>
-<a href="https://www.newindianexpress.com/cities/delhi/2025/Jul/14/capitals-deadly-dose-of-deception" target="_blank" class="btn">Read Story</a>
-</div>
-</div>
-
-</section>
-
 <!-- STATS -->
-<section class="stats">
+<section class="section stats">
 
 <div class="stat-box">
 <h2>40K+</h2>
@@ -235,49 +193,71 @@ I report on health, politics & public policy — bridging ground realities with 
 
 <div class="stat-box">
 <h2>3000+</h2>
-<p>Published Articles</p>
+<p>Published Articles<br>Leading National Publications</p>
 </div>
 
 </section>
 
 <!-- VIDEOS -->
 <section class="section" id="videos">
-
 <h2>Conversations & Interviews</h2>
 
 <div class="card">
-
-<h3>Podcast Episode – Glaucoma</h3>
+<h3>Podcast Episode – Glaucoma Awareness</h3>
 
 <div class="video-container">
 <iframe src="https://www.youtube.com/embed/VM7iiSxsZDo"></iframe>
 </div>
 
+<a href="https://youtu.be/VM7iiSxsZDo" target="_blank" class="btn">Watch Episode</a>
+</div>
+
+<div class="card">
+<h3>Interview with Sandeep Dixit</h3>
+
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/ZX6BzF2xu7Q"></iframe>
+</div>
+
+<a href="https://youtu.be/ZX6BzF2xu7Q" target="_blank" class="btn">Watch Interview</a>
 </div>
 
 </section>
 
 <!-- REPORTING -->
 <section class="section">
-
 <h2>Published Reporting</h2>
 
 <div class="card">
+<h3>Big Bang Launch of Arogya Mandirs</h3>
+<a href="https://www.newindianexpress.com/cities/delhi/2025/May/26/big-bang-launch-of-arogya-mandirs" target="_blank" class="btn">Read Article</a>
+</div>
+
+<div class="card">
 <h3>Fuel Ban Policy Faces Key Hurdles</h3>
-<a href="https://www.newindianexpress.com/cities/delhi/2025/Jun/30/fuel-ban-policy-faces-key-hurdles" class="btn">Read Article</a>
+<a href="https://www.newindianexpress.com/cities/delhi/2025/Jun/30/fuel-ban-policy-faces-key-hurdles" target="_blank" class="btn">Read Article</a>
+</div>
+
+<div class="card">
+<h3>Doctors in Danger</h3>
+<a href="https://www.newindianexpress.com/specials/2024/Aug/19/doctors-in-danger" target="_blank" class="btn">Read Article</a>
+</div>
+
+<div class="card">
+<h3>Capital's Deadly Dose of Deception</h3>
+<a href="https://www.newindianexpress.com/cities/delhi/2025/Jul/14/capitals-deadly-dose-of-deception" target="_blank" class="btn">Read Article</a>
 </div>
 
 </section>
 
 <!-- CONTACT -->
 <section class="section">
-
 <h2>Contact</h2>
 
 <div class="contact-box">
 
-<a href="mailto:aashish396@gmail.com" class="btn">Email Me</a>
-<a href="https://twitter.com/AshishOnGround" class="btn">Twitter</a>
+<a href="mailto:aashish396@gmail.com" class="btn">Email</a>
+<a href="https://twitter.com/AshishOnGround" target="_blank" class="btn">Twitter</a>
 
 </div>
 
