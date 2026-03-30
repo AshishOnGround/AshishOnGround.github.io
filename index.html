@@ -12,319 +12,545 @@
 <meta property="og:url" content="https://ashishonground.github.io/">
 <meta property="og:type" content="website">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 
 <style>
+/* ─── RESET & BASE ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* GLOBAL */
-body{
-margin:0;
-font-family:'Inter',sans-serif;
-background: radial-gradient(circle at bottom, #5a0000 0%, #1a0000 30%, #000000 70%);
-color:#f5f5f5;
+:root {
+  --bg:        #080000;
+  --bg-alt:    #0f0000;
+  --bg-card:   #130000;
+  --red:       #e50914;
+  --red-dim:   #aa0610;
+  --red-glow:  rgba(229,9,20,0.18);
+  --white:     #ffffff;
+  --muted:     #999999;
+  --border:    rgba(229,9,20,0.25);
+  --font-head: 'Oswald', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
 }
 
-/* HEADER */
-.header{
-text-align:center;
-padding:50px 15px 20px;
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-.header h1{
-font-size:40px;
-font-weight:700;
-letter-spacing:-1px;
-color:#ffffff;
+/* ─── NOISE OVERLAY ────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
 }
 
-/* HERO IMAGE */
-.hero-img{
-width:100%;
-height:auto;
-display:block;
+/* ─── HEADER ────────────────────────────────────────── */
+.header {
+  text-align: center;
+  padding: 60px 20px 10px;
+  position: relative;
 }
 
-/* TEXT */
-.role{
-text-align:center;
-color:#ff2a2a;
-font-weight:600;
-margin:15px 10px;
+
+.header h1 {
+  font-family: var(--font-head);
+  font-size: clamp(52px, 10vw, 96px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0;
 }
 
-.desc{
-text-align:center;
-color:#9a9a9a;
-max-width:700px;
-margin:10px auto 25px;
-line-height:1.7;
-padding:0 15px;
+/* ─── HERO IMAGE ────────────────────────────────────── */
+.hero-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(20%) contrast(1.05);
 }
 
-/* BUTTON */
-.btn{
-display:inline-block;
-margin:10px;
-padding:12px 22px;
-background:transparent;
-color:#ff2a2a;
-border:1px solid #ff2a2a;
-border-radius:6px;
-text-decoration:none;
-font-weight:600;
-transition:0.2s ease;
+/* ─── ROLE ──────────────────────────────────────────── */
+.role {
+  text-align: center;
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  padding: 28px 20px 0;
+  position: relative;
 }
 
-.btn:hover{
-background:#ff2a2a;
-color:#000;
+/* pill badge like airtelblackout's ★★★★★ badge */
+.role::before {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: var(--red);
+  vertical-align: middle;
+  margin-right: 12px;
+  opacity: 0.6;
+}
+.role::after {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: var(--red);
+  vertical-align: middle;
+  margin-left: 12px;
+  opacity: 0.6;
 }
 
-/* SECTION */
-.section{
-padding:60px 15px;
-max-width:1000px;
-margin:auto;
+/* ─── DESCRIPTION ───────────────────────────────────── */
+.desc {
+  text-align: center;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 18px auto 32px;
+  line-height: 1.7;
+  padding: 0 20px;
+  font-size: 17px;
+  font-weight: 300;
 }
 
-.section h2{
-text-align:center;
-margin-bottom:25px;
-font-weight:700;
+/* ─── BUTTONS ───────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  margin: 8px;
+  padding: 12px 24px;
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--red);
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:1fr;
-gap:20px;
+.btn:hover {
+  background: var(--red);
+  color: var(--white);
+  box-shadow: 0 0 20px var(--red-glow);
 }
 
-/* CARD */
-.card{
-background:rgba(255,0,0,0.02);
-border:1px solid rgba(255,0,0,0.18);
-border-radius:10px;
-padding:15px;
-text-align:center;
-transition:0.25s ease;
+/* primary/filled variant for the hero CTA */
+.btn-fill {
+  background: var(--red);
+  color: var(--white);
+}
+.btn-fill:hover {
+  background: var(--red-dim);
 }
 
-.card:hover{
-transform:translateY(-4px);
-border-color:#ff2a2a;
-box-shadow:0 8px 25px rgba(255,0,0,0.2);
+/* ─── SECTIONS ──────────────────────────────────────── */
+.section {
+  padding: 70px 20px;
+  max-width: 1040px;
+  margin: auto;
+  position: relative;
 }
 
-/* IMAGE */
-.card img{
-width:100%;
-height:180px;
-object-fit:cover;
-border-radius:10px;
-margin-bottom:10px;
+.section h2 {
+  font-family: var(--font-head);
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--white);
 }
 
-/* VIDEO */
-.video-container{
-position:relative;
-padding-top:56.25%;
+/* ─── DIVIDER ───────────────────────────────────────── */
+.section + .section {
+  border-top: 1px solid var(--border);
 }
 
-.video-container iframe{
-position:absolute;
-width:100%;
-height:100%;
-top:0;
-left:0;
-border:none;
-border-radius:10px;
+/* ─── GRID ──────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
-/* ABOUT */
+@media (min-width: 640px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ─── CARD ──────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+  text-align: left;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--red);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.card:hover {
+  border-color: rgba(229,9,20,0.5);
+  box-shadow: 0 8px 32px var(--red-glow);
+  transform: translateY(-3px);
+}
+
+.card:hover::before { opacity: 1; }
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+  margin-bottom: 14px;
+  filter: grayscale(15%);
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.card p strong { color: var(--white); }
+
+/* ─── VIDEO ─────────────────────────────────────────── */
+.video-container {
+  position: relative;
+  padding-top: 56.25%;
+  margin-bottom: 14px;
+}
+
+.video-container iframe {
+  position: absolute;
+  width: 100%; height: 100%;
+  top: 0; left: 0;
+  border: none;
+  border-radius: 4px;
+}
+
+/* ─── ABOUT ─────────────────────────────────────────── */
 .about {
   padding: 80px 20px;
   text-align: center;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.about h2 {
+  font-family: var(--font-head);
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 36px;
 }
 
 .about-card {
-  max-width: 800px;
+  max-width: 760px;
   margin: auto;
-  background:rgba(255,0,0,0.02);
-  padding: 30px;
-  border-radius: 12px;
-  border:1px solid rgba(255,0,0,0.18);
+  background: var(--bg-card);
+  padding: 36px 40px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  text-align: left;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px var(--red-glow);
 }
 
 .about-card p {
-  color:#9a9a9a;
-  line-height:1.8;
-  margin-bottom:18px;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 300;
 }
 
-.about-card strong {
-  color:#ffffff;
+.about-card p:last-child { margin-bottom: 0; }
+
+.about-card strong { color: var(--white); font-weight: 500; }
+
+/* ─── STAT BLOCK (featured project) ─────────────────── */
+/* mimics the 3 / 0 / 21+ / 30+ / ∞ stat block */
+.stat-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 36px 24px;
+  text-align: center;
+  transition: box-shadow 0.25s, transform 0.25s;
 }
 
-/* FOOTER */
-footer{
-border-top:1px solid rgba(255,0,0,0.2);
-margin-top:40px;
-color:#888;
+.stat-card:hover {
+  box-shadow: 0 8px 32px var(--red-glow);
+  transform: translateY(-3px);
 }
 
-/* DESKTOP */
-@media(min-width:768px){
-.grid{
-grid-template-columns:1fr 1fr;
-}
+.stat-card img {
+  width: 120px !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 4px;
+  margin: 0 auto 18px;
+  display: block;
+  filter: none !important;
 }
 
+.stat-card h3 {
+  font-family: var(--font-head);
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.stat-card p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+
+/* ─── CONTACT ────────────────────────────────────────── */
+.contact-section {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+}
+
+/* ─── FOOTER ─────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 28px 20px;
+  color: #444;
+  font-size: 13px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-family: var(--font-head);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─── SCROLL FADE-IN ─────────────────────────────────── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
 </style>
 </head>
 
 <body>
 
-<div class="header">
-<h1>Ashish Srivastava</h1>
+<!-- NAME -->
+<div class="header fade-in">
+  <h1>Ashish Srivastava</h1>
 </div>
 
+<!-- HERO IMAGE -->
 <img src="og-image.png" class="hero-img">
 
-<div class="role">
-Journalist | Ground Reporter | Storyteller | Podcast Producer
+<!-- ROLE -->
+<div class="role fade-in">
+  Journalist | Ground Reporter | Storyteller | Podcast Producer
 </div>
 
-<div class="desc">
-I report on health, politics & public policy — bridging ground realities with digital storytelling.
+<!-- DESCRIPTION -->
+<div class="desc fade-in">
+  I report on health, politics &amp; public policy — bridging ground realities with digital storytelling.
 </div>
 
-<div style="text-align:center;">
-<a href="#videos" class="btn">Explore Work</a>
-<a href="ashish-srivastava-resume.pdf" class="btn" target="_blank">Download CV</a>
+<!-- BUTTONS -->
+<div style="text-align:center;" class="fade-in">
+  <a href="#videos" class="btn btn-fill">Explore Work</a>
+  <a href="ashish-srivastava-resume.pdf" class="btn" target="_blank">Download CV</a>
 </div>
 
+<!-- ABOUT -->
 <section class="about">
-<h2>About Me</h2>
-
-<div class="about-card">
-<p><strong>Multimedia journalist</strong> covering governance, public policy and healthcare, with a focus on <strong>ground realities and real-world impact</strong>.</p>
-
-<p>Experienced in <strong>investigative reporting, policy analysis and fact-checking</strong>, with a track record of breaking exclusives on governance and public health.</p>
-
-<p>My work spans reporting, podcasts and video journalism — bringing <strong>depth and clarity</strong> to complex issues.</p>
-</div>
+  <h2 class="fade-in">About Me</h2>
+  <div class="about-card fade-in">
+    <p>
+      <strong>Multimedia journalist</strong> covering governance, public policy and healthcare, with a focus on <strong>ground realities and real-world impact</strong>.
+    </p>
+    <p>
+      Experienced in <strong>investigative reporting, policy analysis and fact-checking</strong>, with a track record of breaking exclusives on governance and public health.
+    </p>
+    <p>
+      My work spans reporting, podcasts and video journalism — bringing <strong>depth and clarity</strong> to complex issues.
+    </p>
+  </div>
 </section>
 
+<!-- FEATURED PROJECT -->
 <section class="section">
-<h2>🚀 Featured Project</h2>
-<div class="grid">
-<div class="card">
-<img src="assets/whatthefact-logo.png" alt="WhatTheFact Logo" style="width:140px; margin:auto; display:block; margin-bottom:10px;">
-<h3>WhatTheFact</h3>
-<p>AI-powered fact-checking tool to verify viral claims, misinformation and breaking news in real time.</p>
-<a href="https://rebrand.ly/WhatTheFact" target="_blank" class="btn">🔍 Try WhatTheFact (Live Demo)</a>
-</div>
-</div>
+  <h2 class="fade-in">🚀 Featured Project</h2>
+  <div class="grid">
+    <div class="stat-card fade-in">
+      <img src="assets/whatthefact-logo.png" alt="WhatTheFact Logo">
+      <h3>WhatTheFact</h3>
+      <p>
+        AI-powered fact-checking tool to verify viral claims, misinformation and breaking news in real time.
+      </p>
+      <a href="https://rebrand.ly/WhatTheFact" target="_blank" class="btn btn-fill">
+        🔍 Try WhatTheFact (Live Demo)
+      </a>
+    </div>
+  </div>
 </section>
 
+<!-- VIDEOS -->
 <section class="section" id="videos">
-<h2>Conversations & Interviews</h2>
+  <h2 class="fade-in">Conversations &amp; Interviews</h2>
+  <div class="grid">
 
-<div class="grid">
+    <div class="card fade-in">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/VM7iiSxsZDo"></iframe>
+      </div>
+      <a href="https://youtu.be/VM7iiSxsZDo" class="btn">Watch Episode</a>
+    </div>
 
-<div class="card">
-<div class="video-container">
-<iframe src="https://www.youtube.com/embed/VM7iiSxsZDo"></iframe>
-</div>
-<a href="https://youtu.be/VM7iiSxsZDo" class="btn">Watch Episode</a>
-</div>
+    <div class="card fade-in">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/ZX6BzF2xu7Q"></iframe>
+      </div>
+      <a href="https://youtu.be/ZX6BzF2xu7Q" class="btn">Watch Interview</a>
+    </div>
 
-<div class="card">
-<div class="video-container">
-<iframe src="https://www.youtube.com/embed/ZX6BzF2xu7Q"></iframe>
-</div>
-<a href="https://youtu.be/ZX6BzF2xu7Q" class="btn">Watch Interview</a>
-</div>
-
-</div>
+  </div>
 </section>
 
+<!-- ARTICLES -->
 <section class="section">
-<h2>Published Reporting</h2>
+  <h2 class="fade-in">Published Reporting</h2>
+  <div class="grid">
 
-<div class="grid">
+    <div class="card fade-in">
+      <img src="https://media.newindianexpress.com/newindianexpress/2025-05-26/bq0t1wap/arogya03065317.jpg" onerror="this.style.display='none'">
+      <p>Big Bang Launch of Arogya Mandirs</p>
+      <a href="https://www.newindianexpress.com/cities/delhi/2025/May/26/big-bang-launch-of-arogya-mandirs" class="btn">Read</a>
+    </div>
 
-<div class="card">
-<img src="https://media.newindianexpress.com/newindianexpress/2025-05-26/bq0t1wap/arogya03065317.jpg" onerror="this.style.display='none'">
-<p>Big Bang Launch of Arogya Mandirs</p>
-<a href="https://www.newindianexpress.com/cities/delhi/2025/May/26/big-bang-launch-of-arogya-mandirs" class="btn">Read</a>
-</div>
+    <div class="card fade-in">
+      <img src="https://media.newindianexpress.com/newindianexpress/2025-06-30/ziuz1mzm/NewBB-Project.jpg" onerror="this.style.display='none'">
+      <p>Fuel Ban Policy Faces Key Hurdles</p>
+      <a href="https://www.newindianexpress.com/cities/delhi/2025/Jun/30/fuel-ban-policy-faces-key-hurdles" class="btn">Read</a>
+    </div>
 
-<div class="card">
-<img src="https://media.newindianexpress.com/newindianexpress/2025-06-30/ziuz1mzm/NewBB-Project.jpg" onerror="this.style.display='none'">
-<p>Fuel Ban Policy Faces Key Hurdles</p>
-<a href="https://www.newindianexpress.com/cities/delhi/2025/Jun/30/fuel-ban-policy-faces-key-hurdles" class="btn">Read</a>
-</div>
+    <div class="card fade-in">
+      <img src="https://media.newindianexpress.com/newindianexpress/2024-08-19/ce9m3fuz/PTI08_16_2024_000289B%20(1).jpg" onerror="this.style.display='none'">
+      <p>Doctors in Danger</p>
+      <a href="https://www.newindianexpress.com/specials/2024/Aug/19/doctors-in-danger" class="btn">Read</a>
+    </div>
 
-<div class="card">
-<img src="https://media.newindianexpress.com/newindianexpress/2024-08-19/ce9m3fuz/PTI08_16_2024_000289B%20(1).jpg" onerror="this.style.display='none'">
-<p>Doctors in Danger</p>
-<a href="https://www.newindianexpress.com/specials/2024/Aug/19/doctors-in-danger" class="btn">Read</a>
-</div>
+    <div class="card fade-in">
+      <img src="https://media.newindianexpress.com/newindianexpress/2025-07-13/8v9g0hms/Screenshot-2025-07-14-034228.jpg" onerror="this.style.display='none'">
+      <p>Capital's Deadly Dose of Deception</p>
+      <a href="https://www.newindianexpress.com/cities/delhi/2025/Jul/14/capitals-deadly-dose-of-deception" class="btn">Read</a>
+    </div>
 
-<div class="card">
-<img src="https://media.newindianexpress.com/newindianexpress/2025-07-13/8v9g0hms/Screenshot-2025-07-14-034228.jpg" onerror="this.style.display='none'">
-<p>Capital's Deadly Dose of Deception</p>
-<a href="https://www.newindianexpress.com/cities/delhi/2025/Jul/14/capitals-deadly-dose-of-deception" class="btn">Read</a>
-</div>
-
-</div>
+  </div>
 </section>
 
+<!-- FEATURED IN MEDIA -->
 <section class="section">
-<h2>Featured In Media</h2>
+  <h2 class="fade-in">Featured In Media</h2>
+  <div class="grid">
 
-<div class="grid">
+    <div class="card fade-in">
+      <img src="https://thelogicalindian.com/wp-content/uploads/2025/11/Web-Featured-Image-53.jpg.webp" onerror="this.style.display='none'">
+      <p><strong>Delhi's Toxic Air Crisis – Quoted by The Logical Indian</strong></p>
+      <a href="https://thelogicalindian.com/delhis-toxic-air-crisis-grap-3-on-hold-amid-slight-improvement-several-detained-at-india-gate-protest-against-rising-aqi/" class="btn">Read Coverage</a>
+    </div>
 
-<div class="card">
-<img src="https://thelogicalindian.com/wp-content/uploads/2025/11/Web-Featured-Image-53.jpg.webp" onerror="this.style.display='none'">
-<p><strong>Delhi’s Toxic Air Crisis – Quoted by The Logical Indian</strong></p>
-<a href="https://thelogicalindian.com/delhis-toxic-air-crisis-grap-3-on-hold-amid-slight-improvement-several-detained-at-india-gate-protest-against-rising-aqi/" class="btn">Read Coverage</a>
-</div>
+    <div class="card fade-in">
+      <p><strong>Kolkata Doctor Protest – The Patriot</strong></p>
+      <a href="https://thepatriot.in/delhi-ncr/kolkata-doctor-rape-murder-aiims-other-hospital-doctors-call-off-strike-after-sc-assurance-56182/" class="btn">Read Coverage</a>
+    </div>
 
-<div class="card">
-<p><strong>Kolkata Doctor Protest – The Patriot</strong></p>
-<a href="https://thepatriot.in/delhi-ncr/kolkata-doctor-rape-murder-aiims-other-hospital-doctors-call-off-strike-after-sc-assurance-56182/" class="btn">Read Coverage</a>
-</div>
+    <div class="card fade-in">
+      <img src="https://images.moneycontrol.com/static-hindinews/2021/12/ResidentDoctors775-770x430.jpg" onerror="this.style.display='none'">
+      <p><strong>NEET PG Protest – Moneycontrol</strong></p>
+      <a href="https://hindi.moneycontrol.com/news/india/delhi-police-detains-resident-doctors-protesting-near-ito-forda-announces-strike-373841.html" class="btn">Read Coverage</a>
+    </div>
 
-<div class="card">
-<img src="https://images.moneycontrol.com/static-hindinews/2021/12/ResidentDoctors775-770x430.jpg" onerror="this.style.display='none'">
-<p><strong>NEET PG Protest – Moneycontrol</strong></p>
-<a href="https://hindi.moneycontrol.com/news/india/delhi-police-detains-resident-doctors-protesting-near-ito-forda-announces-strike-373841.html" class="btn">Read Coverage</a>
-</div>
+    <div class="card fade-in">
+      <p><strong>AIIMS Cyber Breach – Medianama</strong></p>
+      <a href="https://www.medianama.com/2023/06/223-e-hospital-malware-attack-it-minister-denies-breach-aiims-confirms/" class="btn">Read Coverage</a>
+    </div>
 
-<div class="card">
-<p><strong>AIIMS Cyber Breach – Medianama</strong></p>
-<a href="https://www.medianama.com/2023/06/223-e-hospital-malware-attack-it-minister-denies-breach-aiims-confirms/" class="btn">Read Coverage</a>
-</div>
-
-</div>
+  </div>
 </section>
 
-<section class="section">
-<h2>Contact</h2>
-
-<div style="text-align:center;">
-<a href="mailto:aashish396@gmail.com" class="btn">Email</a>
-<a href="https://twitter.com/AshishOnGround" class="btn">Twitter</a>
-</div>
-
+<!-- CONTACT -->
+<section class="section contact-section">
+  <h2 class="fade-in">Contact</h2>
+  <div style="text-align:center;" class="fade-in">
+    <a href="mailto:aashish396@gmail.com" class="btn btn-fill">Email</a>
+    <a href="https://twitter.com/AshishOnGround" class="btn">Twitter</a>
+  </div>
 </section>
 
-<footer style="text-align:center;padding:20px;color:#777;">
-© 2026 Ashish Srivastava
-</footer>
+<footer>© 2026 Ashish Srivastava</footer>
+
+<script>
+// Scroll-triggered fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
