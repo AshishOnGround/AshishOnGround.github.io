@@ -97,12 +97,11 @@ body{background:var(--bg);color:var(--white);font-family:var(--fb);overflow-x:hi
 
 /* desc */
 .hero-desc{
-  color:#fff;font-size:17px;font-weight:400;line-height:1.78;
+  color:#111;font-size:17px;font-weight:500;line-height:1.78;
   max-width:500px;margin:0 auto 32px;
   padding:13px 20px;
-  background:rgba(0,0,0,.55);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border-radius:3px;border-left:3px solid var(--red);text-align:left;
+  background:rgba(255,255,255,0.88);
+  border-radius:3px;border-left:4px solid var(--red);text-align:left;
   opacity:0;animation:up .8s var(--ease) 1.2s forwards;
 }
 
@@ -165,10 +164,11 @@ body{background:var(--bg);color:var(--white);font-family:var(--fb);overflow-x:hi
 .about h2 .bar{display:inline-block;width:28px;height:3px;background:var(--red);vertical-align:middle;margin:0 12px 5px;border-radius:2px}
 .about-inner{max-width:900px;margin:auto;display:grid;grid-template-columns:1fr;gap:36px;align-items:start}
 @media(min-width:700px){.about-inner{grid-template-columns:260px 1fr}}
-.about-photo-wrap{position:relative;max-width:260px;margin:0 auto}
+.about-photo-wrap{position:relative;width:100%;margin:0 auto}
 .about-photo{
-  width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;
+  width:100%;height:auto;
   border-radius:4px;display:block;
+  object-fit:contain;
   filter:grayscale(10%) contrast(1.06);
   transition:filter .4s,transform .4s var(--ease);
 }
@@ -432,42 +432,34 @@ footer{text-align:center;padding:28px 20px;color:#2e2e2e;font-family:var(--fh);f
 </section>
 
 
-<!-- ═══════════ PUBLISHED REPORTING — Netflix shelf ═══════════ -->
+<!-- ═══════════ PUBLISHED REPORTING ═══════════ -->
 <section class="section">
   <div class="section-inner">
     <h2 class="fi">Published Reporting</h2>
-    <div class="shelf">
+    <div class="grid">
 
-      <div class="shelf-card fi">
-        <img class="shelf-card-img" src="https://media.newindianexpress.com/newindianexpress/2025-05-26/bq0t1wap/arogya03065317.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
-        <div class="shelf-card-info">
-          <p class="shelf-card-title">Big Bang Launch of Arogya Mandirs</p>
-          <a href="https://www.newindianexpress.com/cities/delhi/2025/May/26/big-bang-launch-of-arogya-mandirs" class="btn shelf-card-btn">Read</a>
-        </div>
+      <div class="card fi">
+        <img src="https://media.newindianexpress.com/newindianexpress/2025-05-26/bq0t1wap/arogya03065317.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
+        <p>Big Bang Launch of Arogya Mandirs</p>
+        <a href="https://www.newindianexpress.com/cities/delhi/2025/May/26/big-bang-launch-of-arogya-mandirs" class="btn">Read</a>
       </div>
 
-      <div class="shelf-card fi">
-        <img class="shelf-card-img" src="https://media.newindianexpress.com/newindianexpress/2025-06-30/ziuz1mzm/NewBB-Project.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
-        <div class="shelf-card-info">
-          <p class="shelf-card-title">Fuel Ban Policy Faces Key Hurdles</p>
-          <a href="https://www.newindianexpress.com/cities/delhi/2025/Jun/30/fuel-ban-policy-faces-key-hurdles" class="btn shelf-card-btn">Read</a>
-        </div>
+      <div class="card fi">
+        <img src="https://media.newindianexpress.com/newindianexpress/2025-06-30/ziuz1mzm/NewBB-Project.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
+        <p>Fuel Ban Policy Faces Key Hurdles</p>
+        <a href="https://www.newindianexpress.com/cities/delhi/2025/Jun/30/fuel-ban-policy-faces-key-hurdles" class="btn">Read</a>
       </div>
 
-      <div class="shelf-card fi">
-        <img class="shelf-card-img" src="https://media.newindianexpress.com/newindianexpress/2024-08-19/ce9m3fuz/PTI08_16_2024_000289B%20(1).jpg" loading="lazy" onerror="this.style.display='none'" alt="">
-        <div class="shelf-card-info">
-          <p class="shelf-card-title">Doctors in Danger</p>
-          <a href="https://www.newindianexpress.com/specials/2024/Aug/19/doctors-in-danger" class="btn shelf-card-btn">Read</a>
-        </div>
+      <div class="card fi">
+        <img src="https://media.newindianexpress.com/newindianexpress/2024-08-19/ce9m3fuz/PTI08_16_2024_000289B%20(1).jpg" loading="lazy" onerror="this.style.display='none'" alt="">
+        <p>Doctors in Danger</p>
+        <a href="https://www.newindianexpress.com/specials/2024/Aug/19/doctors-in-danger" class="btn">Read</a>
       </div>
 
-      <div class="shelf-card fi">
-        <img class="shelf-card-img" src="https://media.newindianexpress.com/newindianexpress/2025-07-13/8v9g0hms/Screenshot-2025-07-14-034228.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
-        <div class="shelf-card-info">
-          <p class="shelf-card-title">Capital's Deadly Dose of Deception</p>
-          <a href="https://www.newindianexpress.com/cities/delhi/2025/Jul/14/capitals-deadly-dose-of-deception" class="btn shelf-card-btn">Read</a>
-        </div>
+      <div class="card fi">
+        <img src="https://media.newindianexpress.com/newindianexpress/2025-07-13/8v9g0hms/Screenshot-2025-07-14-034228.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
+        <p>Capital's Deadly Dose of Deception</p>
+        <a href="https://www.newindianexpress.com/cities/delhi/2025/Jul/14/capitals-deadly-dose-of-deception" class="btn">Read</a>
       </div>
 
     </div>
@@ -475,40 +467,32 @@ footer{text-align:center;padding:28px 20px;color:#2e2e2e;font-family:var(--fh);f
 </section>
 
 
-<!-- ═══════════ FEATURED IN MEDIA — Netflix shelf ═══════════ -->
+<!-- ═══════════ FEATURED IN MEDIA ═══════════ -->
 <section class="section">
   <div class="section-inner">
     <h2 class="fi">Featured In Media</h2>
-    <div class="shelf">
+    <div class="grid">
 
-      <div class="shelf-card fi">
-        <img class="shelf-card-img" src="https://thelogicalindian.com/wp-content/uploads/2025/11/Web-Featured-Image-53.jpg.webp" loading="lazy" onerror="this.style.display='none'" alt="">
-        <div class="shelf-card-info">
-          <p class="shelf-card-title"><strong style="color:#fff">Delhi's Toxic Air Crisis</strong> – The Logical Indian</p>
-          <a href="https://thelogicalindian.com/delhis-toxic-air-crisis-grap-3-on-hold-amid-slight-improvement-several-detained-at-india-gate-protest-against-rising-aqi/" class="btn shelf-card-btn">Read Coverage</a>
-        </div>
+      <div class="card fi">
+        <img src="https://thelogicalindian.com/wp-content/uploads/2025/11/Web-Featured-Image-53.jpg.webp" loading="lazy" onerror="this.style.display='none'" alt="">
+        <p><strong>Delhi's Toxic Air Crisis – Quoted by The Logical Indian</strong></p>
+        <a href="https://thelogicalindian.com/delhis-toxic-air-crisis-grap-3-on-hold-amid-slight-improvement-several-detained-at-india-gate-protest-against-rising-aqi/" class="btn">Read Coverage</a>
       </div>
 
-      <div class="shelf-card fi">
-        <div class="shelf-card-info" style="padding-top:24px">
-          <p class="shelf-card-title"><strong style="color:#fff">Kolkata Doctor Protest</strong> – The Patriot</p>
-          <a href="https://thepatriot.in/delhi-ncr/kolkata-doctor-rape-murder-aiims-other-hospital-doctors-call-off-strike-after-sc-assurance-56182/" class="btn shelf-card-btn">Read Coverage</a>
-        </div>
+      <div class="card fi">
+        <p><strong>Kolkata Doctor Protest – The Patriot</strong></p>
+        <a href="https://thepatriot.in/delhi-ncr/kolkata-doctor-rape-murder-aiims-other-hospital-doctors-call-off-strike-after-sc-assurance-56182/" class="btn">Read Coverage</a>
       </div>
 
-      <div class="shelf-card fi">
-        <img class="shelf-card-img" src="https://images.moneycontrol.com/static-hindinews/2021/12/ResidentDoctors775-770x430.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
-        <div class="shelf-card-info">
-          <p class="shelf-card-title"><strong style="color:#fff">NEET PG Protest</strong> – Moneycontrol</p>
-          <a href="https://hindi.moneycontrol.com/news/india/delhi-police-detains-resident-doctors-protesting-near-ito-forda-announces-strike-373841.html" class="btn shelf-card-btn">Read Coverage</a>
-        </div>
+      <div class="card fi">
+        <img src="https://images.moneycontrol.com/static-hindinews/2021/12/ResidentDoctors775-770x430.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
+        <p><strong>NEET PG Protest – Moneycontrol</strong></p>
+        <a href="https://hindi.moneycontrol.com/news/india/delhi-police-detains-resident-doctors-protesting-near-ito-forda-announces-strike-373841.html" class="btn">Read Coverage</a>
       </div>
 
-      <div class="shelf-card fi">
-        <div class="shelf-card-info" style="padding-top:24px">
-          <p class="shelf-card-title"><strong style="color:#fff">AIIMS Cyber Breach</strong> – Medianama</p>
-          <a href="https://www.medianama.com/2023/06/223-e-hospital-malware-attack-it-minister-denies-breach-aiims-confirms/" class="btn shelf-card-btn">Read Coverage</a>
-        </div>
+      <div class="card fi">
+        <p><strong>AIIMS Cyber Breach – Medianama</strong></p>
+        <a href="https://www.medianama.com/2023/06/223-e-hospital-malware-attack-it-minister-denies-breach-aiims-confirms/" class="btn">Read Coverage</a>
       </div>
 
     </div>
@@ -569,10 +553,4 @@ document.querySelectorAll('.btn').forEach(btn => {
 });
 
 /* ripple keyframe injected dynamically */
-const style = document.createElement('style');
-style.textContent = '@keyframes ripple{to{transform:scale(1);opacity:0}}';
-document.head.appendChild(style);
-</script>
-
-</body>
-</html>
+const style = document.createEle
