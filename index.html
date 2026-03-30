@@ -9,495 +9,358 @@
 <meta property="og:image" content="https://ashishonground.github.io/ashish-srivastava-og.jpg">
 <meta property="og:url" content="https://ashishonground.github.io/">
 <meta property="og:type" content="website">
-<meta name="description" content="Ashish Srivastava — Multimedia journalist covering governance, public policy and healthcare. Ground reporter, podcast host, storyteller.">
-
+<meta name="description" content="Ashish Srivastava — Multimedia journalist covering governance, public policy and healthcare.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-
 <style>
-/* ─── RESET & TOKENS ───────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --bg:       #080000;
-  --bg-alt:   #0d0000;
-  --bg-card:  #120000;
-  --red:      #e50914;
-  --red-dim:  #aa0610;
-  --red-glow: rgba(229,9,20,0.2);
-  --white:    #ffffff;
-  --muted:    #919191;
-  --border:   rgba(229,9,20,0.22);
-  --fh: 'Oswald', sans-serif;
-  --fb: 'DM Sans', sans-serif;
+/* ══ RESET ══════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080000; --bg2:#0d0000; --bg3:#130000;
+  --red:#e50914; --red2:#b20710;
+  --glow:rgba(229,9,20,0.28);
+  --white:#fff; --muted:#888;
+  --border:rgba(229,9,20,0.2);
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --fh:'Oswald',sans-serif;
+  --fb:'DM Sans',sans-serif;
 }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: var(--fb);
-  font-size: 16px;
-  line-height: 1.6;
-  overflow-x: hidden;
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--fb);overflow-x:hidden}
+
+/* ══ NAV ════════════════════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:60px;padding:0 28px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(to bottom,rgba(8,0,0,0.9),transparent);
+  transition:background .4s ease, box-shadow .4s ease;
 }
+#nav.scrolled{background:rgba(8,0,0,0.97);box-shadow:0 1px 0 var(--border)}
+.nav-logo{font-family:var(--fh);font-size:17px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--white);text-decoration:none}
+.nav-logo em{color:var(--red);font-style:normal}
+.nav-links{display:flex;gap:22px}
+.nav-links a{font-family:var(--fh);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
 
-/* ══════════════════════════════════════════════════════
-   CINEMATIC HERO
-══════════════════════════════════════════════════════ */
-#hero {
-  position: relative;
-  height: 100vh;
-  min-height: 600px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+/* ══ HERO ═══════════════════════════════════════════════ */
+#hero{position:relative;height:100vh;min-height:620px;overflow:hidden;display:flex;align-items:center;justify-content:center}
 
-.cinema-bg {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 5px 0;
-  pointer-events: none;
-  user-select: none;
-}
+/* scrolling bg */
+.cinema-bg{position:absolute;inset:0;display:flex;flex-direction:column;gap:6px;padding:6px 0;pointer-events:none;user-select:none}
+.cinema-row{display:flex;gap:6px;flex:1;min-height:0;will-change:transform}
+.cinema-row img{height:100%;width:260px;object-fit:cover;border-radius:4px;flex-shrink:0;filter:grayscale(30%) brightness(0.52) contrast(1.1)}
+.cinema-row.r1{animation:scrollL 55s linear infinite}
+.cinema-row.r2{animation:scrollR 72s linear infinite}
+.cinema-row.r3{animation:scrollL 43s linear infinite}
+@keyframes scrollL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes scrollR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 
-.cinema-row {
-  display: flex;
-  gap: 5px;
-  flex: 1;
-  min-height: 0;
-  will-change: transform;
-}
-
-.cinema-row img {
-  height: 100%;
-  width: 260px;
-  object-fit: cover;
-  border-radius: 3px;
-  flex-shrink: 0;
-  display: block;
-  filter: grayscale(25%) brightness(0.62) contrast(1.05);
-}
-
-.cinema-row.r1 { animation: goLeft  52s linear infinite; }
-.cinema-row.r2 { animation: goRight 68s linear infinite; }
-.cinema-row.r3 { animation: goLeft  44s linear infinite; }
-
-@keyframes goLeft  { from{transform:translateX(0)}    to{transform:translateX(-50%)} }
-@keyframes goRight { from{transform:translateX(-50%)} to{transform:translateX(0)} }
-
-.cinema-overlay {
-  position: absolute;
-  inset: 0;
+/* overlay */
+.cinema-overlay{
+  position:absolute;inset:0;z-index:1;
   background:
-    linear-gradient(to bottom,
-      rgba(8,0,0,0.82) 0%,
-      rgba(8,0,0,0.12) 22%,
-      rgba(8,0,0,0.05) 45%,
-      rgba(8,0,0,0.55) 72%,
-      rgba(8,0,0,0.97) 90%,
-      #080000 100%
-    ),
-    linear-gradient(to right,
-      rgba(8,0,0,0.65) 0%,
-      transparent 22%,
-      transparent 78%,
-      rgba(8,0,0,0.65) 100%
-    );
-  z-index: 1;
+    linear-gradient(to bottom,rgba(8,0,0,.82) 0%,rgba(8,0,0,.06) 25%,rgba(8,0,0,.06) 52%,rgba(8,0,0,.75) 78%,#080000 100%),
+    linear-gradient(to right,rgba(8,0,0,.6) 0%,transparent 22%,transparent 78%,rgba(8,0,0,.6) 100%);
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 0 24px;
-  width: 100%;
-  max-width: 920px;
+/* hero text */
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;width:100%;max-width:880px}
+
+.hero-role{
+  font-family:var(--fh);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);
+  margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:14px;
+  opacity:0;transform:translateY(14px);
+  animation:up .9s var(--ease) .3s forwards;
+}
+.hero-role::before,.hero-role::after{
+  content:'';display:block;width:0;height:1px;background:var(--red);opacity:.7;flex-shrink:0;
+  animation:grow .8s var(--ease) .9s forwards;
+}
+@keyframes grow{to{width:40px}}
+
+/* animated H1 words */
+.hero-h1{
+  font-family:var(--fh);font-size:clamp(54px,11vw,118px);font-weight:700;
+  color:var(--white);line-height:.9;letter-spacing:-.025em;text-transform:uppercase;
+  text-shadow:0 4px 60px rgba(0,0,0,.95);margin-bottom:26px;
+}
+.hero-h1 .word{display:block;overflow:hidden}
+.hero-h1 .inner{
+  display:block;
+  opacity:0;transform:translateY(105%);
+  animation:wordUp .75s var(--ease) forwards;
+}
+.hero-h1 .word:nth-child(1) .inner{animation-delay:.55s}
+.hero-h1 .word:nth-child(2) .inner{animation-delay:.75s}
+@keyframes wordUp{to{opacity:1;transform:translateY(0)}}
+
+/* desc */
+.hero-desc{
+  color:#fff;font-size:17px;font-weight:400;line-height:1.78;
+  max-width:500px;margin:0 auto 32px;
+  padding:13px 20px;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-radius:3px;border-left:3px solid var(--red);text-align:left;
+  opacity:0;animation:up .8s var(--ease) 1.2s forwards;
 }
 
-.hero-content h1 {
-  font-family: var(--fh);
-  font-size: clamp(52px, 10.5vw, 112px);
-  font-weight: 700;
-  color: var(--white);
-  line-height: 0.92;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  text-shadow: 0 2px 48px rgba(0,0,0,0.9);
-  margin-bottom: 22px;
+/* hero buttons */
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;opacity:0;animation:up .8s var(--ease) 1.5s forwards}
+
+@keyframes up{to{opacity:1;transform:translateY(0)}}
+
+/* scroll cue */
+.scroll-cue{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:0;animation:up 1s ease 2.1s forwards;
+}
+.scroll-cue span{font-family:var(--fh);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.scroll-line{width:1px;height:38px;background:linear-gradient(to bottom,rgba(229,9,20,.8),transparent);animation:drip 1.8s ease-in-out 2.4s infinite}
+@keyframes drip{
+  0%{transform:scaleY(0);transform-origin:top;opacity:1}
+  55%{transform:scaleY(1);transform-origin:top;opacity:1}
+  100%{transform:scaleY(1);transform-origin:bottom;opacity:0}
 }
 
-.hero-role {
-  font-family: var(--fh);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
+/* ══ BUTTONS ════════════════════════════════════════════ */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 28px;
+  font-family:var(--fh);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--white);background:transparent;
+  border:1px solid var(--red);border-radius:3px;
+  text-decoration:none;cursor:pointer;
+  position:relative;overflow:hidden;
+  transition:background .25s,box-shadow .25s,transform .2s var(--ease);
 }
-.hero-role::before,
-.hero-role::after {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 1px;
-  background: var(--red);
-  opacity: 0.65;
-  flex-shrink: 0;
+/* shimmer */
+.btn::before{
+  content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.13),transparent);
+  transition:left .5s ease;
 }
+.btn:hover::before{left:160%}
+.btn:hover{background:var(--red);box-shadow:0 0 32px var(--glow),0 6px 20px rgba(0,0,0,.5);transform:translateY(-2px)}
+.btn:active{transform:translateY(0);box-shadow:0 0 12px var(--glow)}
+.btn-fill{background:var(--red)}
+.btn-fill:hover{background:var(--red2)}
 
-.hero-desc {
-  color: rgba(255,255,255,0.6);
-  max-width: 520px;
-  margin: 0 auto 34px;
-  line-height: 1.75;
-  font-size: 17px;
-  font-weight: 300;
+/* ══ FEATURED IN STRIP ══════════════════════════════════ */
+.strip{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:26px 20px;text-align:center}
+.strip-label{font-family:var(--fh);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.pub-row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 14px}
+.pub-badge{
+  font-family:var(--fh);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.08);border-radius:3px;padding:8px 14px;white-space:nowrap;
+  transition:color .25s,border-color .25s,transform .2s var(--ease);
 }
+.pub-badge:hover{color:rgba(255,255,255,.9);border-color:rgba(229,9,20,.5);transform:translateY(-2px)}
 
-.scroll-hint {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 7px;
-  animation: bob 2.2s ease-in-out infinite;
-  opacity: 0.4;
+/* ══ ABOUT ══════════════════════════════════════════════ */
+.about{padding:90px 24px;background:var(--bg2);border-bottom:1px solid var(--border)}
+.about h2{font-family:var(--fh);font-size:clamp(26px,5vw,42px);font-weight:700;text-transform:uppercase;letter-spacing:.04em;text-align:center;margin-bottom:48px}
+.about h2 .bar{display:inline-block;width:28px;height:3px;background:var(--red);vertical-align:middle;margin:0 12px 5px;border-radius:2px}
+.about-inner{max-width:900px;margin:auto;display:grid;grid-template-columns:1fr;gap:36px;align-items:start}
+@media(min-width:700px){.about-inner{grid-template-columns:260px 1fr}}
+.about-photo-wrap{position:relative;max-width:260px;margin:0 auto}
+.about-photo{
+  width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;
+  border-radius:4px;display:block;
+  filter:grayscale(10%) contrast(1.06);
+  transition:filter .4s,transform .4s var(--ease);
 }
-.scroll-hint span {
-  font-family: var(--fh);
-  font-size: 9px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--white);
+.about-photo-wrap::after{
+  content:'';position:absolute;inset:0;border-radius:4px;
+  box-shadow:inset 0 0 0 1px rgba(229,9,20,.3);
+  pointer-events:none;transition:box-shadow .3s;
 }
-.scroll-arrow {
-  width: 16px;
-  height: 16px;
-  border-right: 2px solid #fff;
-  border-bottom: 2px solid #fff;
-  transform: rotate(45deg);
-  margin-top: -3px;
-}
-@keyframes bob {
-  0%,100%{transform:translateX(-50%) translateY(0)}
-  50%{transform:translateX(-50%) translateY(7px)}
-}
+.about-photo-wrap:hover .about-photo{filter:grayscale(0%) contrast(1.08);transform:scale(1.02)}
+.about-photo-wrap:hover::after{box-shadow:inset 0 0 0 1px rgba(229,9,20,.7),0 0 40px rgba(229,9,20,.14)}
+.about-card{background:var(--bg3);padding:32px 36px;border-radius:4px;border:1px solid var(--border);transition:box-shadow .4s,transform .3s var(--ease)}
+.about-card:hover{transform:translateY(-4px);box-shadow:0 16px 50px rgba(229,9,20,.12)}
+.about-card p{color:var(--muted);line-height:1.85;margin-bottom:18px;font-size:16px;font-weight:300}
+.about-card p:last-child{margin-bottom:0}
+.about-card strong{color:var(--white);font-weight:500}
 
-/* ══════════════════════════════════════════════════════
-   FEATURED IN STRIP
-══════════════════════════════════════════════════════ */
-.featured-strip {
-  background: var(--bg-alt);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 26px 20px;
-  text-align: center;
+/* ══ SECTION SHELL ══════════════════════════════════════ */
+.section{padding:72px 0;overflow:hidden}
+.section-inner{max-width:1040px;margin:auto;padding:0 24px}
+.section+.section{border-top:1px solid var(--border)}
+.section h2{
+  font-family:var(--fh);font-size:clamp(18px,3.5vw,32px);font-weight:700;
+  text-transform:uppercase;letter-spacing:.05em;color:var(--white);
+  margin-bottom:28px;display:flex;align-items:center;gap:12px;
 }
-.featured-strip-label {
-  font-family: var(--fh);
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 18px;
-}
-.featured-logos {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 10px 16px;
-}
-.pub-badge {
-  font-family: var(--fh);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.42);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 3px;
-  padding: 7px 14px;
-  white-space: nowrap;
-  transition: color .2s, border-color .2s;
-}
-.pub-badge:hover {
-  color: rgba(255,255,255,0.85);
-  border-color: rgba(229,9,20,0.45);
-}
+.section h2::before{content:'';display:block;width:4px;height:1.1em;background:var(--red);border-radius:2px;flex-shrink:0}
 
-/* ══════════════════════════════════════════════════════
-   BUTTONS
-══════════════════════════════════════════════════════ */
-.btn {
-  display: inline-block;
-  margin: 8px;
-  padding: 12px 26px;
-  background: transparent;
-  color: var(--white);
-  border: 1px solid var(--red);
-  border-radius: 3px;
-  text-decoration: none;
-  font-family: var(--fh);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: background .2s, box-shadow .2s;
+/* ══ NETFLIX SHELF (horizontal scroll row) ══════════════ */
+.shelf{
+  display:flex;gap:12px;
+  overflow-x:auto;padding-bottom:14px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
 }
-.btn:hover { background: var(--red); box-shadow: 0 0 24px var(--red-glow); }
-.btn-fill { background: var(--red); }
-.btn-fill:hover { background: var(--red-dim); }
+.shelf::-webkit-scrollbar{display:none}
 
-/* ══════════════════════════════════════════════════════
-   ABOUT
-══════════════════════════════════════════════════════ */
-.about {
-  padding: 80px 20px;
-  background: var(--bg-alt);
-  border-bottom: 1px solid var(--border);
+/* Netflix card */
+.shelf-card{
+  flex-shrink:0;width:260px;border-radius:4px;
+  background:var(--bg3);border:1px solid var(--border);
+  scroll-snap-align:start;position:relative;overflow:hidden;
+  transition:transform .35s var(--ease),box-shadow .35s,border-color .35s;
+  cursor:pointer;
 }
-.about h2 {
-  font-family: var(--fh);
-  font-size: clamp(26px, 4.5vw, 40px);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--white);
-  text-align: center;
-  margin-bottom: 40px;
+.shelf-card:hover{transform:scale(1.06);box-shadow:0 12px 48px rgba(0,0,0,.7),0 0 0 1px rgba(229,9,20,.45);border-color:rgba(229,9,20,.45);z-index:2}
+.shelf-card-img{width:100%;height:160px;object-fit:cover;display:block;filter:grayscale(15%);transition:filter .35s}
+.shelf-card:hover .shelf-card-img{filter:grayscale(0%) brightness(1.05)}
+/* hover overlay info */
+.shelf-card-info{
+  padding:14px 16px 16px;
+  background:linear-gradient(to bottom,var(--bg3),rgba(19,0,0,.95));
 }
-.about-inner {
-  max-width: 900px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-  align-items: center;
+.shelf-card-title{font-family:var(--fb);font-size:14px;font-weight:400;line-height:1.5;color:rgba(255,255,255,.85);margin-bottom:10px}
+/* reveal on hover */
+.shelf-card-btn{
+  opacity:0;transform:translateY(6px);
+  transition:opacity .25s,transform .25s var(--ease);
 }
-@media(min-width:700px){
-  .about-inner { grid-template-columns: 260px 1fr; }
-}
-.about-photo {
-  width: 100%;
-  max-width: 260px;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  object-position: top center;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  filter: grayscale(10%) contrast(1.05);
-  display: block;
-  margin: 0 auto;
-}
-.about-card {
-  background: var(--bg-card);
-  padding: 32px 36px;
-  border-radius: 5px;
-  border: 1px solid var(--border);
-  transition: box-shadow .3s, transform .3s;
-}
-.about-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px var(--red-glow);
-}
-.about-card p {
-  color: var(--muted);
-  line-height: 1.85;
-  margin-bottom: 18px;
-  font-size: 16px;
-  font-weight: 300;
-}
-.about-card p:last-child { margin-bottom: 0; }
-.about-card strong { color: var(--white); font-weight: 500; }
+.shelf-card:hover .shelf-card-btn{opacity:1;transform:translateY(0)}
 
-/* ══════════════════════════════════════════════════════
-   SECTIONS
-══════════════════════════════════════════════════════ */
-.section {
-  padding: 70px 20px;
-  max-width: 1040px;
-  margin: auto;
-}
-.section + .section { border-top: 1px solid var(--border); }
-.section h2 {
-  font-family: var(--fh);
-  font-size: clamp(24px, 4.5vw, 38px);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  text-align: center;
-  margin-bottom: 36px;
-  color: var(--white);
-}
+/* ══ 2-COL GRID (videos) ════════════════════════════════ */
+.grid{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:600px){.grid{grid-template-columns:1fr 1fr}}
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
+.card{
+  background:var(--bg3);border:1px solid var(--border);border-radius:4px;
+  padding:20px;position:relative;overflow:hidden;
+  transition:border-color .3s,box-shadow .3s,transform .3s var(--ease);
 }
-@media(min-width:600px){ .grid { grid-template-columns: 1fr 1fr; } }
+.card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--red);opacity:0;transition:opacity .3s}
+.card:hover{border-color:rgba(229,9,20,.5);box-shadow:0 8px 36px rgba(229,9,20,.12);transform:translateY(-3px)}
+.card:hover::before{opacity:1}
+.card p{color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:14px}
+.card p strong{color:var(--white)}
 
-.card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 5px;
-  padding: 20px;
-  text-align: left;
-  transition: border-color .25s, box-shadow .25s, transform .25s;
-  position: relative;
-  overflow: hidden;
-}
-.card::before {
-  content:'';
-  position:absolute; top:0; left:0;
-  width:3px; height:100%;
-  background:var(--red);
-  opacity:0; transition:opacity .25s;
-}
-.card:hover { border-color:rgba(229,9,20,.5); box-shadow:0 8px 32px var(--red-glow); transform:translateY(-3px); }
-.card:hover::before { opacity:1; }
-.card img {
-  width:100%; height:175px;
-  object-fit:cover; border-radius:3px;
-  display:block; margin-bottom:14px;
-  filter:grayscale(15%);
-}
-.card p { color:var(--muted); font-size:14px; line-height:1.6; margin-bottom:14px; }
-.card p strong { color:var(--white); }
+/* video iframe */
+.video-wrap{position:relative;padding-top:56.25%;margin-bottom:14px}
+.video-wrap iframe{position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:3px}
 
-.video-container { position:relative; padding-top:56.25%; margin-bottom:14px; }
-.video-container iframe { position:absolute; width:100%; height:100%; top:0; left:0; border:none; border-radius:3px; }
+/* featured project card */
+.project-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:4px;
+  padding:36px 28px;text-align:center;max-width:500px;
+  transition:box-shadow .3s,transform .3s var(--ease);
+}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 12px 48px rgba(229,9,20,.14)}
+.project-card img{width:120px;height:auto;object-fit:contain;margin:0 auto 18px;display:block}
+.project-card h3{font-family:var(--fh);font-size:26px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px}
+.project-card p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:22px}
 
-.stat-card {
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: 5px;
-  padding: 36px 28px;
-  text-align: center;
-  transition: box-shadow .25s, transform .25s;
-}
-.stat-card:hover { box-shadow:0 8px 32px var(--red-glow); transform:translateY(-3px); }
-.stat-card img {
-  width:120px !important; height:auto !important;
-  object-fit:contain !important;
-  margin:0 auto 18px; display:block; filter:none !important;
-}
-.stat-card h3 {
-  font-family:var(--fh); font-size:26px; font-weight:700;
-  text-transform:uppercase; letter-spacing:.04em;
-  color:var(--white); margin-bottom:12px;
-}
-.stat-card p { color:var(--muted); font-size:15px; line-height:1.7; margin-bottom:20px; }
+/* contact */
+.contact-wrap{background:var(--bg2);border-top:1px solid var(--border)}
 
-.contact-section {
-  background: var(--bg-alt);
-  border-top: 1px solid var(--border);
-}
+/* footer */
+footer{text-align:center;padding:28px 20px;color:#2e2e2e;font-family:var(--fh);font-size:11px;letter-spacing:.12em;text-transform:uppercase;border-top:1px solid rgba(255,255,255,.03)}
 
-footer {
-  text-align:center; padding:28px 20px;
-  color:#333; font-size:12px;
-  border-top:1px solid rgba(255,255,255,0.04);
-  font-family:var(--fh); letter-spacing:.1em; text-transform:uppercase;
-}
-
-/* ── scroll fade-in ── */
-.fade-in { opacity:0; transform:translateY(22px); transition:opacity .65s ease, transform .65s ease; }
-.fade-in.visible { opacity:1; transform:none; }
+/* ══ SCROLL FADE-IN ══════════════════════════════════════ */
+.fi{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.fi.on{opacity:1;transform:none}
+.fi-left{opacity:0;transform:translateX(-28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.fi-left.on{opacity:1;transform:none}
+.fi-right{opacity:0;transform:translateX(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.fi-right.on{opacity:1;transform:none}
 </style>
 </head>
 <body>
 
-<!-- ════════ CINEMATIC HERO ════════ -->
+<!-- ═══════════ NAV ═══════════ -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Ashish <em>On</em> Ground</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#videos">Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+
+<!-- ═══════════ HERO ═══════════ -->
 <section id="hero">
 
   <div class="cinema-bg" aria-hidden="true">
-
-    <!-- ROW 1: field work & broadcast — scrolls LEFT -->
+    <!-- ROW 1 — scrolls left -->
     <div class="cinema-row r1">
-      <img src="img8.jpg"  alt=""><img src="img10.jpg" alt="">
-      <img src="img11.jpg" alt=""><img src="img2.jpg"  alt="">
-      <img src="img4.jpg"  alt=""><img src="img6.jpg"  alt="">
-      <img src="img9.jpg"  alt="">
-      <!-- duplicate for seamless loop -->
-      <img src="img8.jpg"  alt=""><img src="img10.jpg" alt="">
-      <img src="img11.jpg" alt=""><img src="img2.jpg"  alt="">
-      <img src="img4.jpg"  alt=""><img src="img6.jpg"  alt="">
-      <img src="img9.jpg"  alt="">
+      <img src="img8.jpg" alt=""><img src="img10.jpg" alt="">
+      <img src="img11.jpg" alt=""><img src="img2.jpg" alt="">
+      <img src="img4.jpg" alt=""><img src="img6.jpg" alt="">
+      <img src="img9.jpg" alt="">
+      <img src="img8.jpg" alt=""><img src="img10.jpg" alt="">
+      <img src="img11.jpg" alt=""><img src="img2.jpg" alt="">
+      <img src="img4.jpg" alt=""><img src="img6.jpg" alt="">
+      <img src="img9.jpg" alt="">
     </div>
-
-    <!-- ROW 2: print clippings & articles — scrolls RIGHT -->
+    <!-- ROW 2 — scrolls right -->
     <div class="cinema-row r2">
-      <img src="img1.jpg"  alt=""><img src="img3.jpg"  alt="">
-      <img src="img5.jpg"  alt=""><img src="img7.jpg"  alt="">
-      <img src="img9.jpg"  alt=""><img src="img8.jpg"  alt="">
-      <img src="img2.jpg"  alt="">
-      <!-- duplicate -->
-      <img src="img1.jpg"  alt=""><img src="img3.jpg"  alt="">
-      <img src="img5.jpg"  alt=""><img src="img7.jpg"  alt="">
-      <img src="img9.jpg"  alt=""><img src="img8.jpg"  alt="">
-      <img src="img2.jpg"  alt="">
+      <img src="img1.jpg" alt=""><img src="img3.jpg" alt="">
+      <img src="img5.jpg" alt=""><img src="img7.jpg" alt="">
+      <img src="img9.jpg" alt=""><img src="img8.jpg" alt="">
+      <img src="img2.jpg" alt="">
+      <img src="img1.jpg" alt=""><img src="img3.jpg" alt="">
+      <img src="img5.jpg" alt=""><img src="img7.jpg" alt="">
+      <img src="img9.jpg" alt=""><img src="img8.jpg" alt="">
+      <img src="img2.jpg" alt="">
     </div>
-
-    <!-- ROW 3: portraits & mixed — scrolls LEFT faster -->
+    <!-- ROW 3 — scrolls left faster -->
     <div class="cinema-row r3">
-      <img src="img6.jpg"  alt=""><img src="img4.jpg"  alt="">
+      <img src="img6.jpg" alt=""><img src="img4.jpg" alt="">
       <img src="img11.jpg" alt=""><img src="img10.jpg" alt="">
-      <img src="img3.jpg"  alt=""><img src="img7.jpg"  alt="">
-      <img src="img1.jpg"  alt="">
-      <!-- duplicate -->
-      <img src="img6.jpg"  alt=""><img src="img4.jpg"  alt="">
+      <img src="img3.jpg" alt=""><img src="img7.jpg" alt="">
+      <img src="img1.jpg" alt="">
+      <img src="img6.jpg" alt=""><img src="img4.jpg" alt="">
       <img src="img11.jpg" alt=""><img src="img10.jpg" alt="">
-      <img src="img3.jpg"  alt=""><img src="img7.jpg"  alt="">
-      <img src="img1.jpg"  alt="">
+      <img src="img3.jpg" alt=""><img src="img7.jpg" alt="">
+      <img src="img1.jpg" alt="">
     </div>
-
   </div>
 
   <div class="cinema-overlay"></div>
 
   <div class="hero-content">
-    <div class="hero-role fade-in">
+    <div class="hero-role">
       Journalist | Ground Reporter | Storyteller | Podcast Producer
     </div>
-    <h1 class="fade-in">Ashish<br>Srivastava</h1>
-    <p class="hero-desc fade-in">
+
+    <h1 class="hero-h1">
+      <span class="word"><span class="inner">Ashish</span></span>
+      <span class="word"><span class="inner">Srivastava</span></span>
+    </h1>
+
+    <p class="hero-desc">
       I report on health, politics &amp; public policy — bridging ground realities with digital storytelling.
     </p>
-    <div class="fade-in">
+
+    <div class="hero-btns">
       <a href="#videos" class="btn btn-fill">Explore Work</a>
       <a href="ashish-srivastava-resume.pdf" class="btn" target="_blank">Download CV</a>
     </div>
   </div>
 
-  <div class="scroll-hint" aria-hidden="true">
+  <div class="scroll-cue" aria-hidden="true">
     <span>Scroll</span>
-    <div class="scroll-arrow"></div>
+    <div class="scroll-line"></div>
   </div>
 
 </section>
 
 
-<!-- ════════ FEATURED IN ════════ -->
-<div class="featured-strip fade-in">
-  <p class="featured-strip-label">As seen in</p>
-  <div class="featured-logos">
+<!-- ═══════════ FEATURED IN STRIP ═══════════ -->
+<div class="strip fi">
+  <p class="strip-label">As seen in</p>
+  <div class="pub-row">
     <span class="pub-badge">New Indian Express</span>
     <span class="pub-badge">The Morning Standard</span>
     <span class="pub-badge">The Logical Indian</span>
@@ -508,12 +371,14 @@ footer {
 </div>
 
 
-<!-- ════════ ABOUT ════════ -->
-<section class="about">
-  <h2 class="fade-in">About Me</h2>
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="about" id="about">
+  <h2 class="fi">About Me <span class="bar"></span></h2>
   <div class="about-inner">
-    <img src="img4.jpg" alt="Ashish Srivastava" class="about-photo fade-in">
-    <div class="about-card fade-in">
+    <div class="about-photo-wrap fi-left">
+      <img src="og-image.png" alt="Ashish Srivastava" class="about-photo">
+    </div>
+    <div class="about-card fi-right">
       <p>
         <strong>Multimedia journalist</strong> covering governance, public policy and healthcare, with a focus on <strong>ground realities and real-world impact</strong>.
       </p>
@@ -528,140 +393,185 @@ footer {
 </section>
 
 
-<!-- ════════ FEATURED PROJECT ════════ -->
+<!-- ═══════════ FEATURED PROJECT ═══════════ -->
 <section class="section">
-  <h2 class="fade-in">🚀 Featured Project</h2>
-  <div class="grid">
-    <div class="stat-card fade-in">
+  <div class="section-inner">
+    <h2 class="fi">🚀 Featured Project</h2>
+    <div class="project-card fi">
       <img src="assets/whatthefact-logo.png" alt="WhatTheFact Logo">
       <h3>WhatTheFact</h3>
-      <p>
-        AI-powered fact-checking tool to verify viral claims, misinformation and breaking news in real time.
-      </p>
-      <a href="https://rebrand.ly/WhatTheFact" target="_blank" class="btn btn-fill">
-        🔍 Try WhatTheFact (Live Demo)
-      </a>
+      <p>AI-powered fact-checking tool to verify viral claims, misinformation and breaking news in real time.</p>
+      <a href="https://rebrand.ly/WhatTheFact" target="_blank" class="btn btn-fill">🔍 Try Live Demo</a>
     </div>
   </div>
 </section>
 
 
-<!-- ════════ VIDEOS ════════ -->
+<!-- ═══════════ VIDEOS ═══════════ -->
 <section class="section" id="videos">
-  <h2 class="fade-in">Conversations &amp; Interviews</h2>
-  <div class="grid">
+  <div class="section-inner">
+    <h2 class="fi">Conversations &amp; Interviews</h2>
+    <div class="grid">
 
-    <div class="card fade-in">
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/VM7iiSxsZDo" loading="lazy"></iframe>
+      <div class="card fi">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/VM7iiSxsZDo" loading="lazy"></iframe>
+        </div>
+        <a href="https://youtu.be/VM7iiSxsZDo" class="btn">Watch Episode</a>
       </div>
-      <a href="https://youtu.be/VM7iiSxsZDo" class="btn">Watch Episode</a>
-    </div>
 
-    <div class="card fade-in">
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/ZX6BzF2xu7Q" loading="lazy"></iframe>
+      <div class="card fi">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/ZX6BzF2xu7Q" loading="lazy"></iframe>
+        </div>
+        <a href="https://youtu.be/ZX6BzF2xu7Q" class="btn">Watch Interview</a>
       </div>
-      <a href="https://youtu.be/ZX6BzF2xu7Q" class="btn">Watch Interview</a>
-    </div>
 
+    </div>
   </div>
 </section>
 
 
-<!-- ════════ PUBLISHED REPORTING ════════ -->
+<!-- ═══════════ PUBLISHED REPORTING — Netflix shelf ═══════════ -->
 <section class="section">
-  <h2 class="fade-in">Published Reporting</h2>
-  <div class="grid">
+  <div class="section-inner">
+    <h2 class="fi">Published Reporting</h2>
+    <div class="shelf">
 
-    <div class="card fade-in">
-      <img src="https://media.newindianexpress.com/newindianexpress/2025-05-26/bq0t1wap/arogya03065317.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
-      <p>Big Bang Launch of Arogya Mandirs</p>
-      <a href="https://www.newindianexpress.com/cities/delhi/2025/May/26/big-bang-launch-of-arogya-mandirs" class="btn">Read</a>
+      <div class="shelf-card fi">
+        <img class="shelf-card-img" src="https://media.newindianexpress.com/newindianexpress/2025-05-26/bq0t1wap/arogya03065317.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
+        <div class="shelf-card-info">
+          <p class="shelf-card-title">Big Bang Launch of Arogya Mandirs</p>
+          <a href="https://www.newindianexpress.com/cities/delhi/2025/May/26/big-bang-launch-of-arogya-mandirs" class="btn shelf-card-btn">Read</a>
+        </div>
+      </div>
+
+      <div class="shelf-card fi">
+        <img class="shelf-card-img" src="https://media.newindianexpress.com/newindianexpress/2025-06-30/ziuz1mzm/NewBB-Project.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
+        <div class="shelf-card-info">
+          <p class="shelf-card-title">Fuel Ban Policy Faces Key Hurdles</p>
+          <a href="https://www.newindianexpress.com/cities/delhi/2025/Jun/30/fuel-ban-policy-faces-key-hurdles" class="btn shelf-card-btn">Read</a>
+        </div>
+      </div>
+
+      <div class="shelf-card fi">
+        <img class="shelf-card-img" src="https://media.newindianexpress.com/newindianexpress/2024-08-19/ce9m3fuz/PTI08_16_2024_000289B%20(1).jpg" loading="lazy" onerror="this.style.display='none'" alt="">
+        <div class="shelf-card-info">
+          <p class="shelf-card-title">Doctors in Danger</p>
+          <a href="https://www.newindianexpress.com/specials/2024/Aug/19/doctors-in-danger" class="btn shelf-card-btn">Read</a>
+        </div>
+      </div>
+
+      <div class="shelf-card fi">
+        <img class="shelf-card-img" src="https://media.newindianexpress.com/newindianexpress/2025-07-13/8v9g0hms/Screenshot-2025-07-14-034228.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
+        <div class="shelf-card-info">
+          <p class="shelf-card-title">Capital's Deadly Dose of Deception</p>
+          <a href="https://www.newindianexpress.com/cities/delhi/2025/Jul/14/capitals-deadly-dose-of-deception" class="btn shelf-card-btn">Read</a>
+        </div>
+      </div>
+
     </div>
-
-    <div class="card fade-in">
-      <img src="https://media.newindianexpress.com/newindianexpress/2025-06-30/ziuz1mzm/NewBB-Project.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
-      <p>Fuel Ban Policy Faces Key Hurdles</p>
-      <a href="https://www.newindianexpress.com/cities/delhi/2025/Jun/30/fuel-ban-policy-faces-key-hurdles" class="btn">Read</a>
-    </div>
-
-    <div class="card fade-in">
-      <img src="https://media.newindianexpress.com/newindianexpress/2024-08-19/ce9m3fuz/PTI08_16_2024_000289B%20(1).jpg" loading="lazy" onerror="this.style.display='none'" alt="">
-      <p>Doctors in Danger</p>
-      <a href="https://www.newindianexpress.com/specials/2024/Aug/19/doctors-in-danger" class="btn">Read</a>
-    </div>
-
-    <div class="card fade-in">
-      <img src="https://media.newindianexpress.com/newindianexpress/2025-07-13/8v9g0hms/Screenshot-2025-07-14-034228.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
-      <p>Capital's Deadly Dose of Deception</p>
-      <a href="https://www.newindianexpress.com/cities/delhi/2025/Jul/14/capitals-deadly-dose-of-deception" class="btn">Read</a>
-    </div>
-
   </div>
 </section>
 
 
-<!-- ════════ FEATURED IN MEDIA ════════ -->
+<!-- ═══════════ FEATURED IN MEDIA — Netflix shelf ═══════════ -->
 <section class="section">
-  <h2 class="fade-in">Featured In Media</h2>
-  <div class="grid">
+  <div class="section-inner">
+    <h2 class="fi">Featured In Media</h2>
+    <div class="shelf">
 
-    <div class="card fade-in">
-      <img src="https://thelogicalindian.com/wp-content/uploads/2025/11/Web-Featured-Image-53.jpg.webp" loading="lazy" onerror="this.style.display='none'" alt="">
-      <p><strong>Delhi's Toxic Air Crisis – Quoted by The Logical Indian</strong></p>
-      <a href="https://thelogicalindian.com/delhis-toxic-air-crisis-grap-3-on-hold-amid-slight-improvement-several-detained-at-india-gate-protest-against-rising-aqi/" class="btn">Read Coverage</a>
+      <div class="shelf-card fi">
+        <img class="shelf-card-img" src="https://thelogicalindian.com/wp-content/uploads/2025/11/Web-Featured-Image-53.jpg.webp" loading="lazy" onerror="this.style.display='none'" alt="">
+        <div class="shelf-card-info">
+          <p class="shelf-card-title"><strong style="color:#fff">Delhi's Toxic Air Crisis</strong> – The Logical Indian</p>
+          <a href="https://thelogicalindian.com/delhis-toxic-air-crisis-grap-3-on-hold-amid-slight-improvement-several-detained-at-india-gate-protest-against-rising-aqi/" class="btn shelf-card-btn">Read Coverage</a>
+        </div>
+      </div>
+
+      <div class="shelf-card fi">
+        <div class="shelf-card-info" style="padding-top:24px">
+          <p class="shelf-card-title"><strong style="color:#fff">Kolkata Doctor Protest</strong> – The Patriot</p>
+          <a href="https://thepatriot.in/delhi-ncr/kolkata-doctor-rape-murder-aiims-other-hospital-doctors-call-off-strike-after-sc-assurance-56182/" class="btn shelf-card-btn">Read Coverage</a>
+        </div>
+      </div>
+
+      <div class="shelf-card fi">
+        <img class="shelf-card-img" src="https://images.moneycontrol.com/static-hindinews/2021/12/ResidentDoctors775-770x430.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
+        <div class="shelf-card-info">
+          <p class="shelf-card-title"><strong style="color:#fff">NEET PG Protest</strong> – Moneycontrol</p>
+          <a href="https://hindi.moneycontrol.com/news/india/delhi-police-detains-resident-doctors-protesting-near-ito-forda-announces-strike-373841.html" class="btn shelf-card-btn">Read Coverage</a>
+        </div>
+      </div>
+
+      <div class="shelf-card fi">
+        <div class="shelf-card-info" style="padding-top:24px">
+          <p class="shelf-card-title"><strong style="color:#fff">AIIMS Cyber Breach</strong> – Medianama</p>
+          <a href="https://www.medianama.com/2023/06/223-e-hospital-malware-attack-it-minister-denies-breach-aiims-confirms/" class="btn shelf-card-btn">Read Coverage</a>
+        </div>
+      </div>
+
     </div>
-
-    <div class="card fade-in">
-      <p><strong>Kolkata Doctor Protest – The Patriot</strong></p>
-      <a href="https://thepatriot.in/delhi-ncr/kolkata-doctor-rape-murder-aiims-other-hospital-doctors-call-off-strike-after-sc-assurance-56182/" class="btn">Read Coverage</a>
-    </div>
-
-    <div class="card fade-in">
-      <img src="https://images.moneycontrol.com/static-hindinews/2021/12/ResidentDoctors775-770x430.jpg" loading="lazy" onerror="this.style.display='none'" alt="">
-      <p><strong>NEET PG Protest – Moneycontrol</strong></p>
-      <a href="https://hindi.moneycontrol.com/news/india/delhi-police-detains-resident-doctors-protesting-near-ito-forda-announces-strike-373841.html" class="btn">Read Coverage</a>
-    </div>
-
-    <div class="card fade-in">
-      <p><strong>AIIMS Cyber Breach – Medianama</strong></p>
-      <a href="https://www.medianama.com/2023/06/223-e-hospital-malware-attack-it-minister-denies-breach-aiims-confirms/" class="btn">Read Coverage</a>
-    </div>
-
   </div>
 </section>
 
 
-<!-- ════════ CONTACT ════════ -->
-<section class="section contact-section">
-  <h2 class="fade-in">Contact</h2>
-  <div style="text-align:center;" class="fade-in">
-    <a href="mailto:aashish396@gmail.com" class="btn btn-fill">Email</a>
-    <a href="https://twitter.com/AshishOnGround" class="btn">Twitter</a>
+<!-- ═══════════ CONTACT ═══════════ -->
+<section class="section contact-wrap" id="contact">
+  <div class="section-inner">
+    <h2 class="fi">Contact</h2>
+    <div style="text-align:center" class="fi">
+      <a href="mailto:aashish396@gmail.com" class="btn btn-fill">Email</a>
+      <a href="https://twitter.com/AshishOnGround" class="btn">Twitter</a>
+    </div>
   </div>
 </section>
 
 
 <footer>© 2026 Ashish Srivastava</footer>
 
-<script>
-// hero elements fade in on load with stagger
-document.querySelectorAll('#hero .fade-in').forEach((el, i) => {
-  setTimeout(() => el.classList.add('visible'), 300 + i * 200);
-});
 
-// rest of page fades in on scroll
+<script>
+/* ── nav on scroll ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, {passive:true});
+
+/* ── scroll fade-ins ── */
 const io = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 70);
+      setTimeout(() => e.target.classList.add('on'), i * 80);
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.08 });
+}, {threshold: 0.08});
+document.querySelectorAll('.fi, .fi-left, .fi-right').forEach(el => io.observe(el));
 
-document.querySelectorAll('.fade-in:not(#hero .fade-in)').forEach(el => io.observe(el));
+/* ── button click ripple ── */
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const circle = document.createElement('span');
+    const d = Math.max(this.clientWidth, this.clientHeight) * 2;
+    const rect = this.getBoundingClientRect();
+    circle.style.cssText = `
+      position:absolute;width:${d}px;height:${d}px;
+      left:${e.clientX - rect.left - d/2}px;
+      top:${e.clientY - rect.top - d/2}px;
+      background:rgba(255,255,255,0.2);border-radius:50%;
+      transform:scale(0);pointer-events:none;
+      animation:ripple .5s ease forwards;
+    `;
+    this.appendChild(circle);
+    setTimeout(() => circle.remove(), 500);
+  });
+});
+
+/* ripple keyframe injected dynamically */
+const style = document.createElement('style');
+style.textContent = '@keyframes ripple{to{transform:scale(1);opacity:0}}';
+document.head.appendChild(style);
 </script>
 
 </body>
